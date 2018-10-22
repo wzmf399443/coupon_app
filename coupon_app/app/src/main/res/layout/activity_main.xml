@@ -6,9 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!-- 頁面主要內容，用一個Layout包著  -->
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,13 +23,19 @@
             android:id="@+id/coordinatorLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar">
+            android:layout_below="@+id/toolbar"
+            android:fitsSystemWindows="false">
 
 
-
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:layout_marginTop="200dp"
+                android:layout_marginLeft="50dp"/>
         </android.support.design.widget.CoordinatorLayout>
-
-    </RelativeLayout>
+    </FrameLayout>
     <!-- 選單 -->
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
