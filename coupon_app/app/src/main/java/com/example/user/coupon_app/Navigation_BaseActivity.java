@@ -45,7 +45,7 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
                         case R.id.action_home:
                             Intent intent = new Intent();
-                            intent.setClass(Navigation_BaseActivity.this, MainActivity.class);
+                            intent.setClass(Navigation_BaseActivity.this, home.class);
                             startActivity(intent);
                             overridePendingTransition(0, 0);
                             finish();

@@ -27,14 +27,8 @@
             android:fitsSystemWindows="false">
 
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button"
-                android:layout_marginTop="200dp"
-                android:layout_marginLeft="50dp"/>
         </android.support.design.widget.CoordinatorLayout>
+
     </FrameLayout>
     <!-- 選單 -->
     <android.support.design.widget.NavigationView
