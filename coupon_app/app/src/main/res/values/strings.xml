@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">coupon_app</string>
-    <string name="wallet">查看錢包</string>
+    <string name="title_application_coupon">申請coupon</string>
+    <string name="title_application_pay">申請支付</string>
+    <string name="title_gift">贈與</string>
+    <string name="title_home">首頁</string>
+    <string name="title_wallet">查看錢包</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
     <string name="title_activity_wallet">wallet</string>
     <string name="title_activity_application_coupon">application_coupon</string>
     <string name="title_activity_home">home</string>
+    <string name="title_activity_application_pay">application_pay</string>
+    <string name="title_activity_gift">gift</string>
 </resources>

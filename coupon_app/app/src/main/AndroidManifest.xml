@@ -9,13 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".wallet"
             android:label="@string/title_activity_wallet"
@@ -27,6 +21,20 @@
         <activity
             android:name=".home"
             android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".application_pay"
+            android:label="@string/title_activity_application_pay"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".gift"
+            android:label="@string/title_activity_gift"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -2,26 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="#fdf0c2"
+
     android:gravity="bottom"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+    <!--android:background="#fdf0c4"-->
+
 
     <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:contentDescription="@null"
-        android:src="@drawable/c_logo"
-        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@drawable/title_backgroud"
+        android:layout_weight="4"
         />
 
-    <TextView
-        android:id="@+id/txtHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:paddingTop="4dp"
-        android:text="嗨123132"
-        android:textColor="#1b3242" />
+    <!--<TextView-->
+        <!--android:id="@+id/txtHeader"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ellipsize="end"-->
+        <!--android:paddingTop="4dp"-->
+        <!--android:text="嗨123132"-->
+        <!--android:textColor="#1b3242" />-->
 
 </LinearLayout>

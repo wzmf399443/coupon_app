@@ -17,7 +17,7 @@ public class wallet extends Navigation_BaseActivity {
         setContentView(R.layout.activity_wallet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(R.string.wallet);//設置ToolBar Title
+        toolbar.setTitle(R.string.title_wallet);//設置ToolBar Title
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem=3;
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態

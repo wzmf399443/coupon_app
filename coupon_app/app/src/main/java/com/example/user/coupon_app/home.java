@@ -14,6 +14,7 @@ public class home extends Navigation_BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.title_home);//設置ToolBar Title
         setSupportActionBar(toolbar);
 
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar

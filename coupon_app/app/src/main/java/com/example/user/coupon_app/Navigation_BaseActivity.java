@@ -50,20 +50,20 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-//                        case R.id.action_application_coupon:
-//                            Intent intent2 = new Intent();
-//                            intent2.setClass(Navigation_BaseActivity.this, wallet.class);
-//                            startActivity(intent2);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
-//                        case R.id.action_application_pay:
-//                            Intent intent3 = new Intent();
-//                            intent3.setClass(Navigation_BaseActivity.this, wallet.class);
-//                            startActivity(intent3);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
+                        case R.id.action_application_coupon:
+                            Intent intent2 = new Intent();
+                            intent2.setClass(Navigation_BaseActivity.this, application_coupon.class);
+                            startActivity(intent2);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
+                        case R.id.action_application_pay:
+                            Intent intent3 = new Intent();
+                            intent3.setClass(Navigation_BaseActivity.this, application_pay.class);
+                            startActivity(intent3);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
                         case R.id.action_wallet:
                             Intent intent4 = new Intent();
                             intent4.setClass(Navigation_BaseActivity.this, wallet.class);
@@ -71,13 +71,13 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-//                        case R.id.action_gift:
-//                            Intent intent5 = new Intent();
-//                            intent5.setClass(Navigation_BaseActivity.this, wallet.class);
-//                            startActivity(intent5);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
+                        case R.id.action_gift:
+                            Intent intent5 = new Intent();
+                            intent5.setClass(Navigation_BaseActivity.this, gift.class);
+                            startActivity(intent5);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
                     }
                 } else {//點擊當前項目時，收起Navigation
                     DL.closeDrawer(GravityCompat.START);
