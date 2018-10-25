@@ -9,9 +9,11 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:src="@drawable/title_backgroud"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/title_header"
         android:layout_weight="4"
         />
 
