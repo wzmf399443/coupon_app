@@ -78,6 +78,20 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
+                        case R.id.test_scan:
+                            Intent intent6 = new Intent();
+                            intent6.setClass(Navigation_BaseActivity.this, test_coupon.class);
+                            startActivity(intent6);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
+                        case R.id.test_create:
+                            Intent intent7 = new Intent();
+                            intent7.setClass(Navigation_BaseActivity.this, test_create_qrcode.class);
+                            startActivity(intent7);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
                     }
                 } else {//點擊當前項目時，收起Navigation
                     DL.closeDrawer(GravityCompat.START);
