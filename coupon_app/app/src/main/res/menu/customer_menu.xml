@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_home"
+            android:checked="true"
+            android:icon="@drawable/home"
+            android:title="首頁" />
+
+        <item
+            android:id="@+id/action_application_coupon"
+            android:icon="@drawable/coupons"
+            android:title="申請coupon" />
+
+        <item
+            android:id="@+id/action_application_pay"
+            android:icon="@drawable/payment"
+            android:title="申請支付" />
+        <item
+            android:id="@+id/action_wallet"
+            android:icon="@drawable/wallet"
+            android:title="查看錢包" />
+        <item
+            android:id="@+id/action_gift"
+            android:icon="@drawable/product"
+            android:title="轉贈" />
+        <item
+            android:id="@+id/test_scan"
+            android:icon="@drawable/product"
+            android:title="scan" />
+        <item
+        android:id="@+id/test_create"
+        android:icon="@drawable/product"
+        android:title="create" />
+
+    </group>
+
+</menu>
