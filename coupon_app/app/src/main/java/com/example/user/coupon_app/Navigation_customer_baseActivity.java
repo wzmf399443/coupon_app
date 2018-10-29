@@ -8,7 +8,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.annotation.LayoutRes;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -17,7 +16,7 @@ import android.widget.FrameLayout;
  * Created by user on 2018/10/22.
  */
 
-public class Navigation_BaseActivity extends AppCompatActivity {
+public class Navigation_customer_baseActivity extends AppCompatActivity {
     private DrawerLayout DL;
     private FrameLayout FL;
     protected NavigationView NV;
@@ -45,49 +44,49 @@ public class Navigation_BaseActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
                         case R.id.action_home:
                             Intent intent = new Intent();
-                            intent.setClass(Navigation_BaseActivity.this, home.class);
+                            intent.setClass(Navigation_customer_baseActivity.this, customer_home.class);
                             startActivity(intent);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.action_application_coupon:
                             Intent intent2 = new Intent();
-                            intent2.setClass(Navigation_BaseActivity.this, application_coupon.class);
+                            intent2.setClass(Navigation_customer_baseActivity.this, customer_application_coupon.class);
                             startActivity(intent2);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.action_application_pay:
                             Intent intent3 = new Intent();
-                            intent3.setClass(Navigation_BaseActivity.this, application_pay.class);
+                            intent3.setClass(Navigation_customer_baseActivity.this, customer_application_pay.class);
                             startActivity(intent3);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.action_wallet:
                             Intent intent4 = new Intent();
-                            intent4.setClass(Navigation_BaseActivity.this, wallet.class);
+                            intent4.setClass(Navigation_customer_baseActivity.this, customer_wallet.class);
                             startActivity(intent4);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.action_gift:
                             Intent intent5 = new Intent();
-                            intent5.setClass(Navigation_BaseActivity.this, gift.class);
+                            intent5.setClass(Navigation_customer_baseActivity.this, customer_gift.class);
                             startActivity(intent5);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.test_scan:
                             Intent intent6 = new Intent();
-                            intent6.setClass(Navigation_BaseActivity.this, test_coupon.class);
+                            intent6.setClass(Navigation_customer_baseActivity.this, test_coupon.class);
                             startActivity(intent6);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.test_create:
                             Intent intent7 = new Intent();
-                            intent7.setClass(Navigation_BaseActivity.this, test_create_qrcode.class);
+                            intent7.setClass(Navigation_customer_baseActivity.this, test_create_qrcode.class);
                             startActivity(intent7);
                             overridePendingTransition(0, 0);
                             finish();

@@ -1,7 +1,6 @@
 package com.example.user.coupon_app;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class test_coupon extends Navigation_BaseActivity {
+public class test_coupon extends Navigation_customer_baseActivity {
 
     private IntentIntegrator scanIntegrator;
     @Override

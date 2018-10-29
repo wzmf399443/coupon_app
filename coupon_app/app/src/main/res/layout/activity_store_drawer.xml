@@ -7,12 +7,12 @@
     android:layout_height="match_parent">
     <!-- 頁面主要內容，用一個Layout包著  -->
     <FrameLayout
-        android:id="@+id/content_frame"
+        android:id="@+id/content_frame_store"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_store"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#2c7f99"
@@ -33,11 +33,11 @@
     </FrameLayout>
     <!-- 選單 -->
     <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_view"
+        android:id="@+id/navigation_store_view"
         android:layout_width="240dp"
         android:layout_gravity="start"
         android:layout_height="match_parent"
         app:headerLayout="@layout/header"
-        app:menu="@menu/customer_menu" />
+        app:menu="@menu/store_menu" />
 
 </android.support.v4.widget.DrawerLayout>

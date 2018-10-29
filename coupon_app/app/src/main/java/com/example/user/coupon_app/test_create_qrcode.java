@@ -1,7 +1,6 @@
 package com.example.user.coupon_app;
 
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,7 +11,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-public class test_create_qrcode extends Navigation_BaseActivity {
+public class test_create_qrcode extends Navigation_customer_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
