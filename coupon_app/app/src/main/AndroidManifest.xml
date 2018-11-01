@@ -15,7 +15,7 @@
             android:label="@string/title_activity_wallet"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".customer_application_coupon"
+            android:name=".receive_coupon"
             android:label="@string/title_activity_application_coupon"
             android:theme="@style/AppTheme" />
         <activity
@@ -23,7 +23,7 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".customer_application_pay"
+            android:name=".send_coupon"
             android:label="@string/title_activity_application_pay"
             android:theme="@style/AppTheme" />
         <activity
@@ -32,15 +32,18 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".test_coupon" />
         <activity android:name=".test_create_qrcode" />
-        <activity android:name=".login_page">
+        <activity android:name=".login_page" />
+        <activity android:name=".store_drawer" />
+        <activity android:name=".store_home" />
+        <activity android:name=".start_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".store_drawer" />
-        <activity android:name=".store_home"></activity>
+        <activity android:name=".store_issue_coupon" />
+        <activity android:name=".store_stop_grant"></activity>
     </application>
 
 </manifest>

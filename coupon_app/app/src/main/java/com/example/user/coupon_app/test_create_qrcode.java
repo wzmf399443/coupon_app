@@ -22,7 +22,7 @@ public class test_create_qrcode extends Navigation_customer_baseActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("產生");//設置ToolBar Title
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
-        CurrentMenuItem = 6;
+        CurrentMenuItem =5;
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
     }
 

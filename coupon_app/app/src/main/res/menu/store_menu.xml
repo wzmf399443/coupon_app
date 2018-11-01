@@ -17,7 +17,7 @@
             android:icon="@drawable/payment"
             android:title="發放coupon" />
         <item
-            android:id="@+id/action_wallet"
+            android:id="@+id/accept_coupon"
             android:icon="@drawable/wallet"
             android:title="批准優惠券" />
         <item
