@@ -58,25 +58,25 @@ public class Navigation_store_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_grant_coupon:
                             Intent intent3 = new Intent();
-                            intent3.setClass(Navigation_store_baseActivity.this, store_home.class);
+                            intent3.setClass(Navigation_store_baseActivity.this, send_coupon.class);
                             startActivity(intent3);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-//                        case R.id.action_wallet:
-//                            Intent intent4 = new Intent();
-//                            intent4.setClass(Navigation_store_baseActivity.this, customer_wallet.class);
-//                            startActivity(intent4);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
-//                        case R.id.action_gift:
-//                            Intent intent5 = new Intent();
-//                            intent5.setClass(Navigation_store_baseActivity.this, customer_gift.class);
-//                            startActivity(intent5);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
+                        case R.id.accept_coupon:
+                            Intent intent4 = new Intent();
+                            intent4.setClass(Navigation_store_baseActivity.this, receive_coupon.class);
+                            startActivity(intent4);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
+                        case R.id.action_stop_grant:
+                            Intent intent5 = new Intent();
+                            intent5.setClass(Navigation_store_baseActivity.this, customer_gift.class);
+                            startActivity(intent5);
+                            overridePendingTransition(0, 0);
+                            finish();
+                            break;
 //                        case R.id.test_scan:
 //                            Intent intent6 = new Intent();
 //                            intent6.setClass(Navigation_customer_baseActivity.this, test_coupon.class);

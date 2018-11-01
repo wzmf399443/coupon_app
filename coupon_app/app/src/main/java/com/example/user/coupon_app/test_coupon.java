@@ -22,7 +22,7 @@ public class test_coupon extends Navigation_customer_baseActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("掃描");//設置ToolBar Title
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
-        CurrentMenuItem=5;
+        CurrentMenuItem=4;
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
         Button bt1 = (Button) findViewById(R.id.btn_scan);

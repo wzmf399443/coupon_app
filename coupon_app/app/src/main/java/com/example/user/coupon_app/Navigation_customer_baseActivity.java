@@ -51,14 +51,14 @@ public class Navigation_customer_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_application_coupon:
                             Intent intent2 = new Intent();
-                            intent2.setClass(Navigation_customer_baseActivity.this, customer_application_coupon.class);
+                            intent2.setClass(Navigation_customer_baseActivity.this, receive_coupon.class);
                             startActivity(intent2);
                             overridePendingTransition(0, 0);
                             finish();
                             break;
                         case R.id.action_application_pay:
                             Intent intent3 = new Intent();
-                            intent3.setClass(Navigation_customer_baseActivity.this, customer_application_pay.class);
+                            intent3.setClass(Navigation_customer_baseActivity.this, send_coupon.class);
                             startActivity(intent3);
                             overridePendingTransition(0, 0);
                             finish();
