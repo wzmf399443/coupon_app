@@ -17,10 +17,13 @@
             android:icon="@drawable/payment"
             android:title="發放coupon" />
         <item
-            android:id="@+id/action_wallet"
+            android:id="@+id/accept_coupon"
             android:icon="@drawable/wallet"
-            android:title="查看錢包" />
-
+            android:title="批准優惠券" />
+        <item
+            android:id="@+id/action_stop_grant"
+            android:icon="@drawable/wallet"
+            android:title="中止發放" />
 
     </group>
 </menu>

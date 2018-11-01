@@ -16,7 +16,7 @@ public class customer_wallet extends Navigation_customer_baseActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.title_wallet);//設置ToolBar Title
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
-        CurrentMenuItem=3;
+        CurrentMenuItem=2;
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
         Button btn1 = (Button) findViewById(R.id.change_page_btn);
@@ -25,7 +25,7 @@ public class customer_wallet extends Navigation_customer_baseActivity {
             @Override
             public void onClick(View v){
                 Intent intent=new Intent();
-                intent.setClass(customer_wallet.this,customer_application_coupon.class);
+                intent.setClass(customer_wallet.this,receive_coupon.class);
                 startActivity(intent);
             }
         });
