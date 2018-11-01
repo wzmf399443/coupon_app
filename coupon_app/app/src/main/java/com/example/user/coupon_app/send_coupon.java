@@ -64,6 +64,6 @@ public class send_coupon extends Navigation_customer_baseActivity implements Out
         // should be triggered on UI thread. We specify it explicitly
         // cause onNdefPushComplete is called from the Binder thread
         runOnUiThread(() ->
-                Toast.makeText(customer_application_pay.this, "send complete", Toast.LENGTH_SHORT).show());
+                Toast.makeText(send_coupon.this, "send complete", Toast.LENGTH_SHORT).show());
     }
 }
