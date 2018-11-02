@@ -25,7 +25,13 @@
         <activity
             android:name=".receive_coupon"
             android:label="@string/title_activity_application_coupon"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".customer_home"
             android:label="@string/title_activity_home"
@@ -46,7 +52,6 @@
         <activity android:name=".start_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -7,42 +7,38 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
-public class HttpHandler extends AsyncTask<String, String, String> {
+public class HttpHandler extends AsyncTask<Void, Void, String> {
     // This is the JSON body of the post
     private JSONObject postData;
     private String Tag = "HttpHandler";
     private Map<String, String> header;
-
-    public HttpHandler() {
-    }
+    private String urlString;
+    private String method;
 
     // This is a constructor that allows you to pass in the JSON body
-    public HttpHandler(Map<String, String> postData) {
+    public HttpHandler(String urlString, String method, Map<String, String> header, Map<String, String> postData) {
         if (postData != null) {
             this.postData = new JSONObject(postData);
         }
-    }
-
-    public void SetHeader(Map<String, String> map) {
-        this.header = map;
+        this.urlString = urlString;
+        this.method = method;
+        this.header = header;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    protected String doInBackground(String... strings) {
-        String url_to_get = strings[0];
-        String method = strings[1];
+    protected String doInBackground(Void... param) {
         try {
             // This is getting the url from the string we passed in
-            URL url = new URL(url_to_get);
+            URL url = new URL(this.urlString);
 
             // Create the urlConnection
             final HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -64,35 +60,21 @@ public class HttpHandler extends AsyncTask<String, String, String> {
                     writer.flush();
                 }
             }
-
-            int statusCode = urlConnection.getResponseCode();
-
-            if (statusCode == 200) {
-
-                InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
-
-                String response;
-                ByteArrayOutputStream result = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = inputStream.read(buffer)) != -1) {
-                    result.write(buffer, 0, length);
+            StringBuilder stringBuilder = new StringBuilder();
+            if (urlConnection.getResponseCode() == 200) {
+                InputStream inputStream = urlConnection.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                String str;
+                while ((str = reader.readLine()) != null) {
+                    stringBuilder.append(str);
                 }
-
-                response = result.toString();
-                Log.d(Tag, response);
-                // From here you can convert the string to JSON with whatever JSON parser you like to use
-                // After converting the string to JSON, I call my custom callback. You can follow this process too, or you can implement the onPostExecute(Result) method
-                return response;
-            } else {
-                // Status code is not 200
-                // Do something to handle the error
-                return "";
             }
-
+            String response = stringBuilder.toString();
+            Log.d(Tag, response);
+            return response;
         } catch (Exception e) {
-            Log.d(Tag, e.getLocalizedMessage());
-            return "";
+            e.printStackTrace();
+            return null;
         }
     }
 }

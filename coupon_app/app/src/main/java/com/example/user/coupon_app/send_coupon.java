@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import com.example.user.coupon_app.NFC.OutcomingNfcManager;
 
+import static com.example.user.coupon_app.Util.utils.checkNFC;
+
 public class send_coupon extends Navigation_customer_baseActivity implements OutcomingNfcManager.NfcActivity {
 
     private NfcAdapter nfcAdapter;
@@ -26,12 +28,9 @@ public class send_coupon extends Navigation_customer_baseActivity implements Out
         CurrentMenuItem = 2;//目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
-        if (!isNfcSupported()) {
+        /* Check is NFC supported and enable */
+        if (!checkNFC(getApplicationContext())) {
             Toast.makeText(this, "Nfc is not supported on this device", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        if (!nfcAdapter.isEnabled()) {
-            Toast.makeText(this, "NFC disabled on this device. Turn on to proceed", Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -46,16 +45,11 @@ public class send_coupon extends Navigation_customer_baseActivity implements Out
         setIntent(intent);
     }
 
-    private boolean isNfcSupported() {
-        this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        return this.nfcAdapter != null;
-    }
-
     @Override
     public String getOutcomingMessage() {
-        /* TODO:url here */
-        return new String("");
-        //return this.tvOutcomingMessage.getText().toString();
+        /* TODO:have to set url_to_send's url */
+        url_to_send = "http//www.google.com";
+        return new String(url_to_send);
     }
 
     @Override
