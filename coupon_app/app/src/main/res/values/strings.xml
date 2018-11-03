@@ -15,4 +15,5 @@
     <string name="title_activity_test_qrcode">test_qrcode</string>
     <string name="get_coupon">get coupon</string>
     <string name="coupon">coupon</string>
+    <string name="nfc_pay">NFC pay</string>
 </resources>
