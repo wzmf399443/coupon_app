@@ -10,18 +10,18 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.user.coupon_app.urlConnector.HttpHandler;
 
-import java.net.URL;
+import static com.example.user.coupon_app.Util.utils.checkNFC;
 
 public class receive_coupon extends Navigation_customer_baseActivity {
 
     private final String MIME_TEXT_PLAIN = "text/plain";
     String Tag = "Receiver Activity";
     private NfcAdapter nfcAdapter;
-    private URL url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +36,13 @@ public class receive_coupon extends Navigation_customer_baseActivity {
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
 
         /* Check is NFC supported and enable */
-        if (!isNfcSupported()) {
+        if (!checkNFC(getApplicationContext())) {
             Toast.makeText(this, "Nfc is not supported on this device", Toast.LENGTH_SHORT).show();
             finish();
         }
-
-        if (!nfcAdapter.isEnabled()) {
-            Toast.makeText(this, "NFC disabled on this device. Turn on to proceed", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-    }
-
-    private boolean isNfcSupported() {
         this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        return this.nfcAdapter != null;
     }
+
 
     @Override
     protected void onResume() {
@@ -65,7 +57,7 @@ public class receive_coupon extends Navigation_customer_baseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        disableForegroundDispatch(this, this.nfcAdapter);
+        this.nfcAdapter.disableForegroundDispatch(this);
     }
 
     private void receiveMessageFromDevice(Intent intent) {
@@ -77,28 +69,15 @@ public class receive_coupon extends Navigation_customer_baseActivity {
             NdefRecord[] inNdefRecords = inNdefMessage.getRecords();
             NdefRecord ndefRecord_0 = inNdefRecords[0];
 
-            String urlToken = new String(ndefRecord_0.getPayload());
-            String strings[] = {urlToken, "GET"};
-            new HttpHandler().execute(strings);
+            String url = new String(ndefRecord_0.getPayload());
+            Log.d(Tag, url);
+            new HttpHandler(url, "GET", null, null).execute();
         }
     }
 
-    // Foreground dispatch holds the highest priority for capturing NFC intents
-    // then go activities with these intent filters:
-    // 1) ACTION_NDEF_DISCOVERED
-    // 2) ACTION_TECH_DISCOVERED
-    // 3) ACTION_TAG_DISCOVERED
-
-    // always try to match the one with the highest priority, cause ACTION_TAG_DISCOVERED is the most
-    // general case and might be intercepted by some other apps installed on your device as well
-
-    // When several apps can match the same intent Android OS will bring up an app chooser dialog
-    // which is undesirable, because user will most likely have to move his device from the tag or another
-    // NFC device thus breaking a connection, as it's a short range
-
     public void enableForegroundDispatch(AppCompatActivity activity, NfcAdapter adapter) {
 
-        // here we are setting up receiving activity for a foreground dispatch
+        // setting up receiving activity for a foreground dispatch
         // thus if activity is already started it will take precedence over any other activity or app
         // with the same intent filters
 
@@ -119,9 +98,5 @@ public class receive_coupon extends Navigation_customer_baseActivity {
             throw new RuntimeException("Check your MIME type");
         }
         adapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
-    }
-
-    public void disableForegroundDispatch(final AppCompatActivity activity, NfcAdapter adapter) {
-        adapter.disableForegroundDispatch(activity);
     }
 }
