@@ -99,5 +99,4 @@ public class receive_coupon extends Navigation_customer_baseActivity {
         }
         adapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
     }
-
 }

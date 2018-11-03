@@ -42,24 +42,25 @@ public class HttpHandler extends AsyncTask<Void, Void, String> {
 
             // Create the urlConnection
             final HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
             urlConnection.setRequestProperty("Content-Type", "application/json");
-            urlConnection.setRequestMethod(method);
 
             // Set authorization header
-            if (!this.header.isEmpty()) {
+            if (this.header != null && !this.header.isEmpty()) {
                 this.header.forEach((k, v) -> urlConnection.setRequestProperty(k, v));
             }
 
             // Send the post body
             if (method.equals("POST")) {
+                urlConnection.setDoInput(true);
+                urlConnection.setDoOutput(true);
+                urlConnection.setRequestMethod("POST");
                 if (this.postData != null) {
                     OutputStreamWriter writer = new OutputStreamWriter(urlConnection.getOutputStream());
                     writer.write(postData.toString());
                     writer.flush();
                 }
             }
+
             StringBuilder stringBuilder = new StringBuilder();
             if (urlConnection.getResponseCode() == 200) {
                 InputStream inputStream = urlConnection.getInputStream();

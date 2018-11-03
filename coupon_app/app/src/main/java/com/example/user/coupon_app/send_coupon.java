@@ -34,6 +34,7 @@ public class send_coupon extends Navigation_customer_baseActivity implements Out
             finish();
         }
 
+        this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         // encapsulate sending logic in a separate class
         this.outcomingNfccallback = new OutcomingNfcManager(this);
         this.nfcAdapter.setOnNdefPushCompleteCallback(outcomingNfccallback, this);
@@ -48,7 +49,7 @@ public class send_coupon extends Navigation_customer_baseActivity implements Out
     @Override
     public String getOutcomingMessage() {
         /* TODO:have to set url_to_send's url */
-        url_to_send = "http//www.google.com";
+        url_to_send = "http://10.21.10.58:8000";
         return new String(url_to_send);
     }
 
