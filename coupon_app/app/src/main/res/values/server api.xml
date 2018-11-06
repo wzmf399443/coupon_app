@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_server">192.168.0.1</string>
+    <string name="merchant_register">/merchant/register</string>
+    <string name="merchant_login">/merchant/login</string>
+    <string name="merchant_issueCoupon">/merchant/issueCoupon</string>
+    <string name="merchant_grant">/merchant/grant</string>
+    <string name="merchant_confirmCouponPay">/merchant/confirmCouponPay</string>
+    <string name="merchant_terminateCoupon">/merchant/terminateCoupon</string>
+    <string name="merchant_getNotGivenCoupon">/merchant/getNotGivenCoupon</string>
+    <string name="merchant_getUnusedCoupon">/merchant/getUnusedCoupon</string>
+    <string name="merchant_getUsedCoupon">/merchant/getUsedCoupon</string>
+    <string name="merchant_getHistoryCoupon">/merchant/getHistoryCoupon</string>
+
+    <string name="consumer_register">/merchant/getHistoryCoupon</string>
+    <string name="consumer_login">/merchant/getHistoryCoupon</string>
+    <string name="consumer_getCoupons">/merchant/getHistoryCoupon</string>
+    <string name="consumer_transfer">/merchant/getHistoryCoupon</string>
+</resources>
