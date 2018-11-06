@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-public class store_home extends Navigation_store_baseActivity {
+public class store_home extends Navigation_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

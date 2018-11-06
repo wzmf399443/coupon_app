@@ -3,7 +3,7 @@ package com.example.user.coupon_app;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-public class customer_home extends Navigation_customer_baseActivity {
+public class customer_home extends Navigation_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,7 +17,7 @@ import com.example.user.coupon_app.urlConnector.HttpHandler;
 
 import static com.example.user.coupon_app.Util.utils.checkNFC;
 
-public class receive_coupon extends Navigation_customer_baseActivity {
+public class receive_coupon extends Navigation_baseActivity {
 
     private final String MIME_TEXT_PLAIN = "text/plain";
     String Tag = "Receiver Activity";

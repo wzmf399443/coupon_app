@@ -3,7 +3,7 @@ package com.example.user.coupon_app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class store_stop_grant extends AppCompatActivity {
+public class store_stop_grant extends Navigation_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

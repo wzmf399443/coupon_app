@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class test_coupon extends Navigation_customer_baseActivity {
+public class test_coupon extends Navigation_baseActivity {
 
     private IntentIntegrator scanIntegrator;
     @Override
