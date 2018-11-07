@@ -15,18 +15,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
-public class HttpHandler extends AsyncTask<Void, Void, String> {
+public class HttpHandler extends AsyncTask<Void, Void, JSONObject> {
     // This is the JSON body of the post
+    public static String get = "GET";
+    public static String post = "POST";
+
     private JSONObject postData;
     private String Tag = "HttpHandler";
     private Map<String, String> header;
     private String urlString;
     private String method;
 
+    public HttpHandler() {
+    }
+
     // This is a constructor that allows you to pass in the JSON body
-    public HttpHandler(String urlString, String method, Map<String, String> header, Map<String, String> postData) {
+    public HttpHandler(String urlString, String method, Map<String, String> header, JSONObject post_Data) {
         if (postData != null) {
-            this.postData = new JSONObject(postData);
+            this.postData = post_Data;
         }
         this.urlString = urlString;
         this.method = method;
@@ -35,7 +41,7 @@ public class HttpHandler extends AsyncTask<Void, Void, String> {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    protected String doInBackground(Void... param) {
+    protected JSONObject doInBackground(Void... param) {
         try {
             // This is getting the url from the string we passed in
             URL url = new URL(this.urlString);
@@ -58,6 +64,7 @@ public class HttpHandler extends AsyncTask<Void, Void, String> {
                     OutputStreamWriter writer = new OutputStreamWriter(urlConnection.getOutputStream());
                     writer.write(postData.toString());
                     writer.flush();
+                    writer.close();
                 }
             }
 
@@ -70,9 +77,9 @@ public class HttpHandler extends AsyncTask<Void, Void, String> {
                     stringBuilder.append(str);
                 }
             }
-            String response = stringBuilder.toString();
-            Log.d(Tag, response);
-            return response;
+            String str = stringBuilder.toString();
+            Log.d(Tag, str);
+            return new JSONObject(str);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
