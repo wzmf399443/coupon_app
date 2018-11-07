@@ -34,13 +34,13 @@ public class Api_handler extends AppCompatActivity {
     public JSONObject post_to_server(JSONObject post_data, int api, boolean sent_header) throws ExecutionException, InterruptedException {
         Map header = sent_header ? this.get_header() : null;
         return new HttpHandler(this.get_url(api),
-                HttpHandler.post, this.get_header(), post_data).execute().get();
+                HttpHandler.post, header, post_data).execute().get();
     }
 
     public JSONObject get_from_server(int api, boolean sent_header) throws ExecutionException, InterruptedException {
         Map header = sent_header ? this.get_header() : null;
         return new HttpHandler(this.get_url(api),
-                HttpHandler.get, this.get_header(), null).execute().get();
+                HttpHandler.get, header, null).execute().get();
     }
 
     public JSONObject merchant_register(String account, String password, String name) {
