@@ -34,12 +34,12 @@ public class login_page extends AppCompatActivity {
     public void login_change(View view){
         try {
             if (this.login()){
-                if (Identity.getIdentity()=="customer") {
+                if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
                     Intent intent = new Intent();
                     intent.setClass(login_page.this, customer_home.class);
                     startActivity(intent);
                 }
-                if (Identity.getIdentity()=="store") {
+                if (Identity.getIdentity().equals(getString(R.string.id_store))) {
                     Intent intent = new Intent();
                     intent.setClass(login_page.this, store_home.class);
                     startActivity(intent);
