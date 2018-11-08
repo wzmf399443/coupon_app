@@ -1,6 +1,6 @@
 package com.example.user.coupon_app.Util;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 
 import com.example.user.coupon_app.R;
 import com.example.user.coupon_app.urlConnector.HttpHandler;
@@ -13,37 +13,44 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-public class Api_handler extends AppCompatActivity {
-    private final String protocol = getString(R.string.api_protocol);
-    private final String lable_header = getString(R.string.label_header_token);
+public class Api_handler {
+    private static String protocol;
+    private static String lable_header;
+    private static Context context;
 
-    public String get_api_server() {
-        return getString(R.string.api_server);
+    public Api_handler(Context context) {
+        Api_handler.context = context;
+        Api_handler.protocol = context.getString(R.string.api_protocol);
+        Api_handler.lable_header = context.getString(R.string.label_header_token);
     }
 
-    public String get_url(int id) {
-        return protocol + this.get_api_server() + "/" + getString(id);
+    private static String get_api_server() {
+        return context.getString(R.string.api_server);
     }
 
-    public Map<String, String> get_header() {
+    private static String get_url(int id) {
+        return protocol + get_api_server() + "/" + context.getString(id);
+    }
+
+    private static Map<String, String> get_header() {
         return new HashMap<String, String>() {{
             put(lable_header, Identity.getToken());
         }};
     }
 
-    public JSONObject post_to_server(JSONObject post_data, int api, boolean sent_header) throws ExecutionException, InterruptedException {
-        Map header = sent_header ? this.get_header() : null;
-        return new HttpHandler(this.get_url(api),
+    public static JSONObject post_to_server(JSONObject post_data, int api, boolean sent_header) throws ExecutionException, InterruptedException {
+        Map header = sent_header ? get_header() : null;
+        return new HttpHandler(get_url(api),
                 HttpHandler.post, header, post_data).execute().get();
     }
 
-    public JSONObject get_from_server(int api, boolean sent_header) throws ExecutionException, InterruptedException {
-        Map header = sent_header ? this.get_header() : null;
-        return new HttpHandler(this.get_url(api),
+    public static JSONObject get_from_server(int api, boolean sent_header) throws ExecutionException, InterruptedException {
+        Map header = sent_header ? get_header() : null;
+        return new HttpHandler(get_url(api),
                 HttpHandler.get, header, null).execute().get();
     }
 
-    public JSONObject merchant_register(String account, String password, String name) {
+    public static JSONObject merchant_register(String account, String password, String name) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -60,7 +67,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_login(String account, String password) {
+    public static JSONObject merchant_login(String account, String password) {
 
         JSONObject post_data = new JSONObject();
 
@@ -77,7 +84,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_issueCoupon(String name, int value, int limit, int quantity, Date start_date, Date end_date) {
+    public static JSONObject merchant_issueCoupon(String name, int value, int limit, int quantity, Date start_date, Date end_date) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -94,7 +101,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_grant(String consumer, int quantity, Date date, String mark, int obtainValue) {
+    public static JSONObject merchant_grant(String consumer, int quantity, Date date, String mark, int obtainValue) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -113,7 +120,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_confirmCouponPay(int consumeValue, Date consumeDate, String couponAddr, String consumer) {
+    public static JSONObject merchant_confirmCouponPay(int consumeValue, Date consumeDate, String couponAddr, String consumer) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -131,7 +138,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_terminateCoupon() {
+    public static JSONObject merchant_terminateCoupon() {
         try {
             return get_from_server(R.string.merchant_terminateCoupon, true);
         } catch (Exception e) {
@@ -140,7 +147,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_getUnusedCoupon() {
+    public static JSONObject merchant_getUnusedCoupon() {
         try {
             return get_from_server(R.string.merchant_getUnusedCoupon, true);
         } catch (Exception e) {
@@ -149,7 +156,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_getUsedCoupon() {
+    public static JSONObject merchant_getUsedCoupon() {
         try {
             return get_from_server(R.string.merchant_getUsedCoupon, true);
         } catch (Exception e) {
@@ -158,7 +165,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject merchant_getHistoryCoupon() {
+    public static JSONObject merchant_getHistoryCoupon() {
         try {
             return get_from_server(R.string.merchant_getHistoryCoupon, true);
         } catch (Exception e) {
@@ -167,7 +174,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject consumer_register(String account, String password, String name) {
+    public static JSONObject consumer_register(String account, String password, String name) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -184,7 +191,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject consumer_login(String account, String password) {
+    public static JSONObject consumer_login(String account, String password) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -201,7 +208,7 @@ public class Api_handler extends AppCompatActivity {
     }
 
 
-    public JSONObject consumer_transfer(String receive, String coupon) {
+    public static JSONObject consumer_transfer(String receive, String coupon) {
         JSONObject post_data = new JSONObject();
 
         try {
@@ -217,7 +224,7 @@ public class Api_handler extends AppCompatActivity {
         }
     }
 
-    public JSONObject consumer_getCoupons() {
+    public static JSONObject consumer_getCoupons() {
         try {
             return get_from_server(R.string.consumer_getCoupons, true);
         } catch (Exception e) {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.user.coupon_app.Util.Api_handler;
 import com.example.user.coupon_app.Util.Identity;
 
 public class start_page extends AppCompatActivity {
@@ -13,6 +14,7 @@ public class start_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
+        new Api_handler(this);
     }
     public void go_cusmer(View v){
         Identity.setToken(getString(R.string.id_customer));

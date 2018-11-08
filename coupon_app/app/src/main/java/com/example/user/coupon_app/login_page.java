@@ -28,24 +28,25 @@ public class login_page extends AppCompatActivity {
         status = findViewById(R.id.textView5);
     }
 
-    public void login_change_customer(View view){
-        Intent intent =new Intent();
-        intent.setClass(login_page.this,customer_home.class);
+    public void login_change_customer(View view) {
+        Intent intent = new Intent();
+        intent.setClass(login_page.this, customer_home.class);
         try {
             if (this.login()) {
                 startActivity(intent);
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         status.setText(getString(R.string.login_failed));
         status.setTextColor(Color.RED);
         status.setVisibility(view.VISIBLE);
     }
 
-    public void login_change_store(View view){
-        Intent intent =new Intent();
-        intent.setClass(login_page.this,store_home.class);
+    public void login_change_store(View view) {
+        Intent intent = new Intent();
+        intent.setClass(login_page.this, store_home.class);
         startActivity(intent);
         try {
             if (this.login()) {
@@ -64,11 +65,11 @@ public class login_page extends AppCompatActivity {
         String password = edit_password.getText().toString();
         JSONObject resp;
         if (Identity.getIdentity().equals(getString(R.string.id_store))) {
-            resp = new Api_handler().merchant_login(account, password);
+            resp = Api_handler.merchant_login(account, password);
         } else {
-            resp = new Api_handler().consumer_login(account, password);
+            resp = Api_handler.consumer_login(account, password);
         }
         Identity.setToken(resp.getString(getString(R.string.response_token)));
-        return resp.getBoolean(getString(R.string.response_status));
+        return resp.getBoolean(getString(R.string.response_success));
     }
 }
