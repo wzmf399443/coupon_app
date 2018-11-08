@@ -11,7 +11,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-public class test_create_qrcode extends Navigation_customer_baseActivity {
+public class test_create_qrcode extends Navigation_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

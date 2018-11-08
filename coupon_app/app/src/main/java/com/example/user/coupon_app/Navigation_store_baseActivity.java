@@ -31,11 +31,11 @@ public class Navigation_store_baseActivity extends AppCompatActivity {
         getLayoutInflater().inflate(layoutresID, FL, true);
         super.setContentView(DL);
         toolbar = (Toolbar) findViewById(R.id.toolbar_store);
-        setUpNavigation();
+        setUpNavigation_store();
 
     }
 
-    private void setUpNavigation() {
+    private void setUpNavigation_store() {
         // Set navigation item selected listener
         NV.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -79,14 +79,14 @@ public class Navigation_store_baseActivity extends AppCompatActivity {
                             break;
 //                        case R.id.test_scan:
 //                            Intent intent6 = new Intent();
-//                            intent6.setClass(Navigation_customer_baseActivity.this, test_coupon.class);
+//                            intent6.setClass(Navigation_baseActivity.this, test_coupon.class);
 //                            startActivity(intent6);
 //                            overridePendingTransition(0, 0);
 //                            finish();
 //                            break;
 //                        case R.id.test_create:
 //                            Intent intent7 = new Intent();
-//                            intent7.setClass(Navigation_customer_baseActivity.this, test_create_qrcode.class);
+//                            intent7.setClass(Navigation_baseActivity.this, test_create_qrcode.class);
 //                            startActivity(intent7);
 //                            overridePendingTransition(0, 0);
 //                            finish();

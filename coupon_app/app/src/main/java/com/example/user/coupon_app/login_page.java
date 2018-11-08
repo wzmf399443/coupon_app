@@ -14,6 +14,8 @@ import com.example.user.coupon_app.Util.Identity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.user.coupon_app.Util.Identity;
+
 public class login_page extends AppCompatActivity {
     EditText edit_account, edit_password;
     TextView status;
@@ -28,28 +30,20 @@ public class login_page extends AppCompatActivity {
         status = findViewById(R.id.textView5);
     }
 
-    public void login_change_customer(View view){
-        Intent intent =new Intent();
-        intent.setClass(login_page.this,customer_home.class);
-        try {
-            if (this.login()) {
-                startActivity(intent);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        status.setText(getString(R.string.login_failed));
-        status.setTextColor(Color.RED);
-        status.setVisibility(view.VISIBLE);
-    }
 
-    public void login_change_store(View view){
-        Intent intent =new Intent();
-        intent.setClass(login_page.this,store_home.class);
-        startActivity(intent);
+    public void login_change(View view){
         try {
-            if (this.login()) {
-                startActivity(intent);
+            if (this.login()){
+                if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
+                    Intent intent = new Intent();
+                    intent.setClass(login_page.this, customer_home.class);
+                    startActivity(intent);
+                }
+                if (Identity.getIdentity().equals(getString(R.string.id_store))) {
+                    Intent intent = new Intent();
+                    intent.setClass(login_page.this, store_home.class);
+                    startActivity(intent);
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -57,7 +51,8 @@ public class login_page extends AppCompatActivity {
         status.setText(getString(R.string.login_failed));
         status.setTextColor(Color.RED);
         status.setVisibility(view.VISIBLE);
-    }
+        }
+
 
     private boolean login() throws JSONException {
         String account = edit_account.getText().toString();

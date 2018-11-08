@@ -3,7 +3,7 @@ package com.example.user.coupon_app;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-public class customer_gift extends Navigation_customer_baseActivity {
+public class customer_gift extends Navigation_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class customer_gift extends Navigation_customer_baseActivity {
         setSupportActionBar(toolbar);
 
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
-        CurrentMenuItem = 3;//目前Navigation項目位置
+        CurrentMenuItem = 4;//目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
     }
 

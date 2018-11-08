@@ -3,7 +3,7 @@ package com.example.user.coupon_app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class store_issue_coupon extends AppCompatActivity {
+public class store_issue_coupon extends Navigation_baseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

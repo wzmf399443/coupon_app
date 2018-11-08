@@ -15,13 +15,15 @@ public class start_page extends AppCompatActivity {
         setContentView(R.layout.activity_start_page);
     }
     public void go_cusmer(View v){
-        Identity.setToken(getString(R.string.id_customer));
+
+        Identity.setIdentity(getString(R.string.id_customer));
         Intent cusumer = new Intent();
         cusumer.setClass(start_page.this,login_page.class);
         startActivity(cusumer);
     }
     public void go_store(View v){
-        Identity.setToken(getString(R.string.id_store));
+
+        Identity.setIdentity(getString(R.string.id_store));
         Intent store = new Intent();
         store.setClass(start_page.this,login_page.class);
         startActivity(store);
