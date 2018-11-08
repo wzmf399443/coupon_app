@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
-public class customer_home extends Navigation_customer_baseActivity {
+public class customer_home extends  Navigation_baseActivity {
     ListView listview;
 
     @Override

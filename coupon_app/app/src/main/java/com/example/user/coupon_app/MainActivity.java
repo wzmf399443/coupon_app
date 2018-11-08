@@ -2,7 +2,7 @@ package com.example.user.coupon_app;
 
 import android.os.Bundle;
 
-public class MainActivity extends Navigation_customer_baseActivity {
+public class MainActivity extends Navigation_baseActivity {
 
 //    private DrawerLayout drawerLayout;
 //    private NavigationView navigation_view;

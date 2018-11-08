@@ -8,9 +8,9 @@ import android.widget.Toast;
 
 import com.example.user.coupon_app.NFC.OutcomingNfcManager;
 
-import static com.example.user.coupon_app.Util.utils.checkNFC;
 
-public class send_coupon extends Navigation_customer_baseActivity implements OutcomingNfcManager.NfcActivity {
+import static com.example.user.coupon_app.Util.utils.checkNFC;
+public class send_coupon extends Navigation_baseActivity implements OutcomingNfcManager.NfcActivity {
 
     private NfcAdapter nfcAdapter;
     private OutcomingNfcManager outcomingNfccallback;

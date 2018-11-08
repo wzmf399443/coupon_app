@@ -17,13 +17,15 @@ public class start_page extends AppCompatActivity {
         new Api_handler(this);
     }
     public void go_cusmer(View v){
-        Identity.setToken(getString(R.string.id_customer));
+
+        Identity.setIdentity(getString(R.string.id_customer));
         Intent cusumer = new Intent();
         cusumer.setClass(start_page.this,login_page.class);
         startActivity(cusumer);
     }
     public void go_store(View v){
-        Identity.setToken(getString(R.string.id_store));
+
+        Identity.setIdentity(getString(R.string.id_store));
         Intent store = new Intent();
         store.setClass(start_page.this,login_page.class);
         startActivity(store);
