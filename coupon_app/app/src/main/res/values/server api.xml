@@ -20,8 +20,21 @@
     <string name="consumer_getCoupons">/merchant/getHistoryCoupon</string>
     <string name="consumer_transfer">/merchant/getHistoryCoupon</string>
 
-    <string name="response_status">success</string>
+    <string name="response_success">success</string>
     <string name="response_message">message</string>
     <string name="response_token">token</string>
-    <string name="response_contract">contractAddress</string>
+    <string name="response_contractAddress">contractAddress</string>
+    <string name="response_data">data</string>
+    <string name="response_merchant">merchant</string>
+    <string name="response_couponName">couponName</string>
+    <string name="response_value">value</string>
+    <string name="response_limit">limit</string>
+    <string name="response_obtainValue">obtainValue</string>
+    <string name="response_consumerValue">consumerValue</string>
+    <string name="response_status">status</string>
+    <string name="response_startDate">startDate</string>
+    <string name="response_endDate">endDate</string>
+    <string name="response_obtainDate">obtainDate</string>
+    <string name="response_consumeDate">consumeDate</string>
+
 </resources>

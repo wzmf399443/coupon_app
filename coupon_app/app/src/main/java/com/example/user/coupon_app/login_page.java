@@ -59,11 +59,11 @@ public class login_page extends AppCompatActivity {
         String password = edit_password.getText().toString();
         JSONObject resp;
         if (Identity.getIdentity().equals(getString(R.string.id_store))) {
-            resp = new Api_handler().merchant_login(account, password);
+            resp = Api_handler.merchant_login(account, password);
         } else {
-            resp = new Api_handler().consumer_login(account, password);
+            resp = Api_handler.consumer_login(account, password);
         }
         Identity.setToken(resp.getString(getString(R.string.response_token)));
-        return resp.getBoolean(getString(R.string.response_status));
+        return resp.getBoolean(getString(R.string.response_success));
     }
 }
