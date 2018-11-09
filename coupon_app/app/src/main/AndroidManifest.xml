@@ -28,7 +28,9 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
@@ -52,11 +54,13 @@
         <activity android:name=".start_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".store_issue_coupon" />
-        <activity android:name=".store_stop_grant"></activity>
+        <activity android:name=".store_stop_grant" />
+        <activity android:name=".register"></activity>
     </application>
 
 </manifest>
