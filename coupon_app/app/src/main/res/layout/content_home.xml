@@ -7,6 +7,21 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.user.coupon_app.customer_home"
     tools:showIn="@layout/activity_home">
+    <android.support.design.widget.TabLayout
+        android:id="@+id/TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2894FF"
+        app:tabMode="fixed"
+        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabGravity="fill" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
 
     <ListView
         android:id="@+id/listview_coupon"
