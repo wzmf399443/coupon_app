@@ -13,6 +13,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.user.coupon_app.Util.Identity;
+import com.example.user.coupon_app.customer.customer_gift;
+import com.example.user.coupon_app.customer.customer_home;
+import com.example.user.coupon_app.customer.customer_wallet;
+import com.example.user.coupon_app.store.store_home;
 
 /**
  * Created by user on 2018/10/22.
