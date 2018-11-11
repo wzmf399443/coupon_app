@@ -1,4 +1,4 @@
-package com.example.user.coupon_app;
+package com.example.user.coupon_app.customer;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.coupon_app.Coupon_entity;
+import com.example.user.coupon_app.ListCouponAdapter;
+import com.example.user.coupon_app.Navigation_baseActivity;
+import com.example.user.coupon_app.R;
 import com.example.user.coupon_app.Util.Api_handler;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

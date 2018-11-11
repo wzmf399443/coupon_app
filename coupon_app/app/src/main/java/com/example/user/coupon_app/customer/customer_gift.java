@@ -1,7 +1,10 @@
-package com.example.user.coupon_app;
+package com.example.user.coupon_app.customer;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.example.user.coupon_app.Navigation_baseActivity;
+import com.example.user.coupon_app.R;
 
 public class customer_gift extends Navigation_baseActivity {
 

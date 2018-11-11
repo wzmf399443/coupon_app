@@ -1,7 +1,9 @@
-package com.example.user.coupon_app;
+package com.example.user.coupon_app.store;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.user.coupon_app.R;
 
 public class store_drawer extends AppCompatActivity {
 
