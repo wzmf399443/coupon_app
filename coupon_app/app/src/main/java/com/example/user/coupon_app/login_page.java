@@ -31,27 +31,31 @@ public class login_page extends AppCompatActivity {
     }
 
 
-    public void login_change(View view){
+    public void login_change(View view) {
         try {
-            if (this.login()){
+            if (this.login()) {
                 if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
                     Intent intent = new Intent();
                     intent.setClass(login_page.this, customer_home.class);
                     startActivity(intent);
                 }
-                if (Identity.getIdentity().equals(getString(R.string.id_store))) {
+                else if (Identity.getIdentity().equals(getString(R.string.id_store))) {
                     Intent intent = new Intent();
                     intent.setClass(login_page.this, store_home.class);
                     startActivity(intent);
+                }else{
+                    status.setText(getString(R.string.login_failed));
+                    status.setTextColor(Color.RED);
+                    status.setVisibility(view.VISIBLE);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            status.setText(getString(R.string.login_failed));
+            status.setTextColor(Color.RED);
+            status.setVisibility(view.VISIBLE);
         }
-        status.setText(getString(R.string.login_failed));
-        status.setTextColor(Color.RED);
-        status.setVisibility(view.VISIBLE);
-        }
+    }
 
 
     private boolean login() throws JSONException {

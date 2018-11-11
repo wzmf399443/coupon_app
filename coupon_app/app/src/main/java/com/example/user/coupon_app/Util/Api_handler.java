@@ -14,22 +14,16 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class Api_handler {
-    private static String protocol;
     private static String lable_header;
     private static Context context;
 
     public Api_handler(Context context) {
         Api_handler.context = context;
-        Api_handler.protocol = context.getString(R.string.api_protocol);
         Api_handler.lable_header = context.getString(R.string.label_header_token);
     }
 
-    private static String get_api_server() {
-        return context.getString(R.string.api_server);
-    }
-
     private static String get_url(int id) {
-        return protocol + get_api_server() + "/" + context.getString(id);
+        return context.getString(id);
     }
 
     private static Map<String, String> get_header() {

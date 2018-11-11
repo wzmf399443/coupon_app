@@ -3,6 +3,7 @@ package com.example.user.coupon_app.urlConnector;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.JsonReader;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -31,9 +32,7 @@ public class HttpHandler extends AsyncTask<Void, Void, JSONObject> {
 
     // This is a constructor that allows you to pass in the JSON body
     public HttpHandler(String urlString, String method, Map<String, String> header, JSONObject post_Data) {
-        if (postData != null) {
-            this.postData = post_Data;
-        }
+        this.postData = post_Data;
         this.urlString = urlString;
         this.method = method;
         this.header = header;

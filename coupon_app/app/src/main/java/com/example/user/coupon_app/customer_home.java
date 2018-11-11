@@ -26,16 +26,16 @@ public class customer_home extends  Navigation_baseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_home); //設置ToolBar Title
         setSupportActionBar(toolbar);
-        listview = findViewById(R.id.listview_coupon);
-        listview = findViewById(R.id.listview_coupon);
 
         setUpToolBar(); //使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem = 0; //目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true); //設置Navigation目前項目被選取狀態
 
+        listview = findViewById(R.id.listview_coupon);
         try {
 
             JSONObject list_of_coupons = Api_handler.consumer_getCoupons();
