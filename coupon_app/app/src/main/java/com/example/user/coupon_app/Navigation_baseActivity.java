@@ -13,6 +13,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.user.coupon_app.Util.Identity;
+import com.example.user.coupon_app.customer.customer_gift;
+import com.example.user.coupon_app.customer.customer_home;
+import com.example.user.coupon_app.customer.customer_wallet;
+import com.example.user.coupon_app.store.store_home;
 
 /**
  * Created by user on 2018/10/22.
@@ -27,7 +31,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView (@LayoutRes int layoutresID){
-        if (Identity.getIdentity()=="customer"){
+        if (Identity.getIdentity().equals(getString(R.string.id_customer))){
             DL = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
             FL = (FrameLayout) DL.findViewById(R.id.content_frame);
             NV = (NavigationView)DL.findViewById(R.id.navigation_view);
@@ -36,7 +40,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
             toolbar = (Toolbar) findViewById(R.id.toolbar);
             setUpNavigation_cus();
         }
-        if (Identity.getIdentity()=="store"){
+        if (Identity.getIdentity().equals(getString(R.string.id_store))){
             DL = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_store_drawer, null);
             FL = (FrameLayout) DL.findViewById(R.id.content_frame_store);
             NV = (NavigationView)DL.findViewById(R.id.navigation_store_view);

@@ -4,4 +4,7 @@
         android:drawable="@drawable/consumer"/>
     <item android:state_selected="false"
         android:drawable="@drawable/online_store"/>
+    <item android:state_selected="false"
+        android:drawable="@drawable/coupons"/>
+
 </selector>

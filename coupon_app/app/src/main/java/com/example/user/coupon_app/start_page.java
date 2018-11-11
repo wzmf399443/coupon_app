@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.user.coupon_app.Util.Api_handler;
 import com.example.user.coupon_app.Util.Identity;
+import com.example.user.coupon_app.customer.customer_wallet;
 
 public class start_page extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class start_page extends AppCompatActivity {
 
         Identity.setIdentity(getString(R.string.id_customer));
         Intent cusumer = new Intent();
-        cusumer.setClass(start_page.this,login_page.class);
+        cusumer.setClass(start_page.this,customer_wallet.class);
         startActivity(cusumer);
     }
     public void go_store(View v){
