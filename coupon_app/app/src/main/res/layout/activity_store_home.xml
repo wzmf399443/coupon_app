@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.coupon_app.store_home">
+    tools:context="com.example.user.coupon_app.store.store_home">
 
 </android.support.constraint.ConstraintLayout>

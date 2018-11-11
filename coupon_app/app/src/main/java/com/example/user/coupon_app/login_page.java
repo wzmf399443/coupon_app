@@ -14,7 +14,8 @@ import com.example.user.coupon_app.Util.Identity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.user.coupon_app.Util.Identity;
+import com.example.user.coupon_app.customer.customer_home;
+import com.example.user.coupon_app.store.store_home;
 
 public class login_page extends AppCompatActivity {
     EditText edit_account, edit_password;
