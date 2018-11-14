@@ -39,7 +39,6 @@ public class login_page extends AppCompatActivity {
             this.edit_password.setText(intent.getStringExtra("password"));
             this.login_change(findViewById(R.layout.activity_login_page));
         }
-
     }
 
     public void register(View view) {
@@ -52,7 +51,9 @@ public class login_page extends AppCompatActivity {
         try {
             String account = edit_account.getText().toString();
             String password = edit_password.getText().toString();
-            if (this.login(account,password)) {
+            JSONObject ret = this.login(account,password);
+            if (ret.getBoolean(getString(R.string.response_success))) {
+                Identity.setToken(ret.getString(getString(R.string.response_token)));
                 if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
                     Intent intent = new Intent();
                     intent.setClass(login_page.this, customer_home.class);
@@ -61,9 +62,9 @@ public class login_page extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setClass(login_page.this, store_home.class);
                     startActivity(intent);
-                } else {
-                    utils.set_text_error_message(view, this.status, getString(R.string.login_failed));
                 }
+            }else{
+                utils.set_text_error_message(view, this.status, getString(R.string.login_failed));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -72,14 +73,13 @@ public class login_page extends AppCompatActivity {
     }
 
 
-    private boolean login(String account,String password) throws JSONException {
+    private JSONObject login(String account,String password) throws JSONException {
         JSONObject resp;
         if (Identity.getIdentity().equals(getString(R.string.id_store))) {
             resp = Api_handler.merchant_login(account, password);
         } else {
             resp = Api_handler.consumer_login(account, password);
         }
-        Identity.setToken(resp.getString(getString(R.string.response_token)));
-        return resp.getBoolean(getString(R.string.response_success));
+        return resp;
     }
 }

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.user.coupon_app.Util.Api_handler;
 import com.example.user.coupon_app.Util.Identity;
 import com.example.user.coupon_app.Util.utils;
-import com.example.user.coupon_app.store.store_home;
 
 import org.json.JSONObject;
 
@@ -35,24 +34,24 @@ public class register extends AppCompatActivity {
         String name = edit_user_name.getText().toString();
         JSONObject resp;
         if (Identity.getIdentity().equals(getString(R.string.id_store))) {
-            resp = Api_handler.merchant_register(account,password,name);
+            resp = Api_handler.merchant_register(account, password, name);
         } else {
-            resp = Api_handler.consumer_register(account,password,name);
+            resp = Api_handler.consumer_register(account, password, name);
         }
         try {
-            boolean status = resp.getBoolean(getString(R.string.response_success));
-            if(!status){
-                utils.set_text_error_message(v,tv_status,getString(R.string.register_failed));
+            if (!resp.getBoolean(getString(R.string.response_success))) {
+                utils.set_text_error_message(v, tv_status, getString(R.string.register_failed));
+            } else {
+                Intent intent = new Intent();
+                intent.putExtra("is_register", true);
+                intent.putExtra("account", account);
+                intent.putExtra("password", password);
+                intent.setClass(this, login_page.class);
+                startActivity(intent);
             }
-            Intent intent = new Intent();
-            intent.putExtra("is_register",true);
-            intent.putExtra("account",account);
-            intent.putExtra("password",password);
-            intent.setClass(this, login_page.class);
-            startActivity(intent);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            utils.set_text_error_message(v,tv_status,getString(R.string.register_failed));
+            utils.set_text_error_message(v, tv_status, getString(R.string.register_failed));
         }
     }
 }

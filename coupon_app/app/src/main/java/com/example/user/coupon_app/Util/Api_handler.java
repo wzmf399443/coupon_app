@@ -49,7 +49,7 @@ public class Api_handler {
 
         try {
             post_data.put("account", account);
-            post_data.put("pwd", password);
+            post_data.put("password", password);
             post_data.put("name", name);
             return post_to_server(post_data, R.string.merchant_register, false);
         } catch (JSONException e) {
@@ -67,7 +67,7 @@ public class Api_handler {
 
         try {
             post_data.put("account", account);
-            post_data.put("pwd", password);
+            post_data.put("password", password);
             return post_to_server(post_data, R.string.merchant_login, false);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -78,13 +78,16 @@ public class Api_handler {
         }
     }
 
-    public static JSONObject merchant_issueCoupon(String name, int value, int limit, int quantity, Date start_date, Date end_date) {
+    public static JSONObject merchant_issueCoupon(String name, int value, int limit, int quantity, String start_date, String end_date) {
         JSONObject post_data = new JSONObject();
 
         try {
             post_data.put("name", name);
             post_data.put("value", value);
             post_data.put("limit", limit);
+            post_data.put("quantity", quantity);
+            post_data.put("start_date", quantity);
+            post_data.put("end_date", quantity);
             return post_to_server(post_data, R.string.merchant_issueCoupon, true);
         } catch (JSONException e) {
             e.printStackTrace();
