@@ -3,4 +3,6 @@
     <string name="login_failed">account or password not correct</string>
     <string name="listView_is_empty">You don\'t have any coupons</string>
     <string name="register_failed">register failed</string>
+    <string name="issue_coupon_failed">issue coupon failed</string>
+    <string name="issue_coupon_success">issue coupon success</string>
 </resources>

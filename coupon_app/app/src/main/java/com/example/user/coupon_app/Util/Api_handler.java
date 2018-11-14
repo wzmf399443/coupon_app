@@ -86,8 +86,8 @@ public class Api_handler {
             post_data.put("value", value);
             post_data.put("limit", limit);
             post_data.put("quantity", quantity);
-            post_data.put("start_date", quantity);
-            post_data.put("end_date", quantity);
+            post_data.put("startDate", start_date);
+            post_data.put("endDate", end_date);
             return post_to_server(post_data, R.string.merchant_issueCoupon, true);
         } catch (JSONException e) {
             e.printStackTrace();

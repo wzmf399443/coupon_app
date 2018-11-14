@@ -17,6 +17,7 @@ import com.example.user.coupon_app.customer.customer_gift;
 import com.example.user.coupon_app.customer.customer_home;
 import com.example.user.coupon_app.customer.customer_wallet;
 import com.example.user.coupon_app.store.store_home;
+import com.example.user.coupon_app.store.store_issue_coupon;
 
 /**
  * Created by user on 2018/10/22.
@@ -155,7 +156,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_issue_coupon:
                             Intent intent2 = new Intent();
-                            intent2.setClass(Navigation_baseActivity.this, store_home.class);
+                            intent2.setClass(Navigation_baseActivity.this, store_issue_coupon.class);
                             startActivity(intent2);
                             overridePendingTransition(0, 0);
                             finish();
