@@ -16,4 +16,15 @@ public class coupon_list_available extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.activity_coupon_list_available, container, false);
         return view;
     }
+
+    public static coupon_list_available newInstance(String text) {
+
+        coupon_list_available f = new coupon_list_available();
+        Bundle b = new Bundle();
+        b.putString("msg", text);
+
+        f.setArguments(b);
+
+        return f;
+    }
 }
