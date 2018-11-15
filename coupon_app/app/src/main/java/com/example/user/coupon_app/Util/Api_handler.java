@@ -144,6 +144,15 @@ public class Api_handler {
         }
     }
 
+    public static JSONObject merchant_getNotGivenCoupon() {
+        try {
+            return get_from_server(R.string.merchant_getNotGivenCoupon, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static JSONObject merchant_getUnusedCoupon() {
         try {
             return get_from_server(R.string.merchant_getUnusedCoupon, true);
