@@ -178,7 +178,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_stop_grant:
                             Intent intent5 = new Intent();
-                            intent5.setClass(Navigation_baseActivity.this, customer_gift.class);
+                            intent5.setClass(Navigation_baseActivity.this, store_stop_grant.class);
                             startActivity(intent5);
                             overridePendingTransition(0, 0);
                             finish();
