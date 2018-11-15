@@ -7,6 +7,9 @@ public class Coupon_entity {
     @SerializedName("merchant")
     private String coupon_name;
 
+    @SerializedName("couponAddress")
+    private String couponAddress;
+
     @SerializedName("couponName")
     private String coupon_merchant;
 
@@ -31,16 +34,21 @@ public class Coupon_entity {
     @SerializedName("obtainDate")
     private String obtainDate;
 
+    @SerializedName("consumeDate")
+    private String consumeDate;
+
+
     @SerializedName("endDate")
     private String expire_date;
 
     public Coupon_entity() {
     }
 
-    public Coupon_entity(String coupon_name, String coupon_merchant,
+    public Coupon_entity(String coupon_name, String couponAddress,String coupon_merchant,
                          int coupon_value, int coupon_consumerValue, int limit, int obtainValue, int status,
-                         String startDate, String obtainDate, String expire_date) {
+                         String startDate, String obtainDate, String expire_date,String consumeDate) {
         this.setCoupon_name(coupon_name);
+        this.setCouponAddress(couponAddress);
         this.setCoupon_merchant(coupon_merchant);
         this.setCoupon_value(coupon_value);
         this.setCoupon_consumerValue(coupon_consumerValue);
@@ -50,12 +58,14 @@ public class Coupon_entity {
         this.setStartDate(startDate);
         this.setObtainDate(obtainDate);
         this.setExpire_date(expire_date);
+        this.setConsumeDate(consumeDate);
     }
 
     @Override
     public String toString() {
         return "Coupon_entity{" +
                 "coupon_name='" + coupon_name + '\'' +
+                ", couponAddress='" + couponAddress + '\'' +
                 ", coupon_merchant='" + coupon_merchant + '\'' +
                 ", coupon_value=" + coupon_value +
                 ", coupon_consumerValue=" + coupon_consumerValue +
@@ -64,6 +74,7 @@ public class Coupon_entity {
                 ", status=" + status +
                 ", startDate='" + startDate + '\'' +
                 ", obtainDate='" + obtainDate + '\'' +
+                ", consumeDate='" + consumeDate + '\'' +
                 ", expire_date='" + expire_date + '\'' +
                 '}';
     }
@@ -146,5 +157,21 @@ public class Coupon_entity {
 
     public void setExpire_date(String expire_date) {
         this.expire_date = expire_date;
+    }
+
+    public String getCouponAddress() {
+        return couponAddress;
+    }
+
+    public void setCouponAddress(String couponAddress) {
+        this.couponAddress = couponAddress;
+    }
+
+    public String getConsumeDate() {
+        return consumeDate;
+    }
+
+    public void setConsumeDate(String consumeDate) {
+        this.consumeDate = consumeDate;
     }
 }
