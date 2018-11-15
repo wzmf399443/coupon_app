@@ -32,6 +32,9 @@ import java.util.Optional;
 
 public class home extends Navigation_baseActivity {
 
+    ListView listview;
+    TextView tv_list_view;
+
     private ViewPager myViewPager;
     private TabLayout tabLayout;
 
@@ -82,8 +85,9 @@ public class home extends Navigation_baseActivity {
             }
         });
 
-        ListView listview = (ListView) one.findViewById(R.id.listview_coupon);
-        TextView tv_list_view = (TextView) one.findViewById(R.id.textView_show);
+
+        listview =(ListView)one.findViewById(R.id.listview_coupon);
+        tv_list_view=(TextView)one.findViewById(R.id.textView_show);
 
         tabLayout.setupWithViewPager(myViewPager);
         tabLayout.getTabAt(0).setText("可使用");
