@@ -54,58 +54,52 @@ public class home extends Navigation_baseActivity {
 
         myViewPager = (ViewPager) findViewById(R.id.myViewPager);
         tabLayout = (TabLayout) findViewById(R.id.TabLayout);
-
         List<View> vlist = new ArrayList<View>();
-        View one = getLayoutInflater().inflate(R.layout.activity_coupon_list_available, null);
-        View two = getLayoutInflater().inflate(R.layout.activity_coupon_list_used, null);
-
-        vlist.add(one);
-        vlist.add(two);
-
-        myViewPager.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return vlist.size();
-            }
-
-            @Override
-            public boolean isViewFromObject(View view, Object object) {
-                return view == object;
-            }
-
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                myViewPager.addView(vlist.get(position));
-                return vlist.get(position);
-            }
-
-            @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
-                myViewPager.removeView((LinearLayout) object);
-            }
-        });
-
-
-        listview =(ListView)one.findViewById(R.id.listview_coupon);
-        tv_list_view=(TextView)one.findViewById(R.id.textView_show);
-
-        tabLayout.setupWithViewPager(myViewPager);
-        tabLayout.getTabAt(0).setText("可使用");
-        tabLayout.getTabAt(1).setText("已使用");
-
         List<Coupon_entity> coupons = new ArrayList<>();
 
         if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
+            vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_available, null));
+            vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_used, null));
+
+            listview =(ListView)vlist.get(0).findViewById(R.id.listview_coupon);
+            tv_list_view=(TextView)vlist.get(0).findViewById(R.id.textView_show);
+            myViewPager.setAdapter(new myadapter(vlist,myViewPager));
+
             Optional.ofNullable(
                     this.getCoupons(Api_handler.consumer_getCoupons())
             ).ifPresent(coupons::addAll);
+            setView(coupons,listview,tv_list_view);
+
+            tabLayout.setupWithViewPager(myViewPager);
+            tabLayout.getTabAt(0).setText("可使用");
+            tabLayout.getTabAt(1).setText("已使用");
+
         } else {
+            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_used, null));
+            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_available, null));
+            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_historical, null));
+            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_unissued, null));
+            myViewPager.setAdapter(new myadapter(vlist,myViewPager));
+
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUsedCoupon())).ifPresent(coupons::addAll);
+            setViewValue(coupons,vlist.get(0));
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUnusedCoupon())).ifPresent(coupons::addAll);
+            setViewValue(coupons,vlist.get(1));
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons::addAll);
+            setViewValue(coupons,vlist.get(2));
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getHistoryCoupon())).ifPresent(coupons::addAll);
+            setViewValue(coupons,vlist.get(3));
+
+            tabLayout.setupWithViewPager(myViewPager);
+            tabLayout.getTabAt(0).setText("已使用");
+            tabLayout.getTabAt(1).setText("未使用");
+            tabLayout.getTabAt(2).setText("歷史紀錄");
+            tabLayout.getTabAt(3).setText("未發放");
         }
 
+
+    }
+    private void setView(List<Coupon_entity> coupons,ListView listview,TextView tv_list_view){
         if (coupons.isEmpty()) {
             listview.setVisibility(View.INVISIBLE);
             tv_list_view.setVisibility(View.VISIBLE);
@@ -121,7 +115,11 @@ public class home extends Navigation_baseActivity {
             });
         }
     }
-
+    private void setViewValue(List<Coupon_entity> coupons,View view){
+        listview =(ListView)view.findViewById(R.id.listview_coupon);
+        tv_list_view=(TextView)view.findViewById(R.id.textView_show);
+        setView(coupons,listview,tv_list_view);
+    }
     private List<Coupon_entity> getCoupons(JSONObject list_of_coupons) {
         if (list_of_coupons != null) {
             try {
@@ -138,5 +136,35 @@ public class home extends Navigation_baseActivity {
             }
         }
         return null;
+    }
+
+    public class myadapter extends PagerAdapter{
+        List<View> vlist;
+        ViewPager myViewPager;
+        public myadapter(List<View> vlist,ViewPager myViewPager){
+            this.vlist=vlist;
+            this.myViewPager=myViewPager;
+        }
+            @Override
+            public int getCount() {
+            return this.vlist.size();
+        }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+            this.myViewPager.addView(this.vlist.get(position));
+            return this.vlist.get(position);
+        }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+            myViewPager.removeView((LinearLayout) object);
+        }
+
     }
 }
