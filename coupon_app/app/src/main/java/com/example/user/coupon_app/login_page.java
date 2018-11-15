@@ -2,7 +2,6 @@ package com.example.user.coupon_app;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,8 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.user.coupon_app.Util.utils;
-import com.example.user.coupon_app.customer.customer_home;
-import com.example.user.coupon_app.store.store_home;
 
 public class login_page extends AppCompatActivity {
     EditText edit_account, edit_password;
@@ -34,7 +31,7 @@ public class login_page extends AppCompatActivity {
         status = findViewById(R.id.textView5);
 
         Intent intent = getIntent();
-        if(intent.getBooleanExtra("is_register",false)){
+        if (intent.getBooleanExtra("is_register", false)) {
             this.edit_account.setText(intent.getStringExtra("account"));
             this.edit_password.setText(intent.getStringExtra("password"));
             this.login_change(findViewById(R.layout.activity_login_page));
@@ -51,19 +48,13 @@ public class login_page extends AppCompatActivity {
         try {
             String account = edit_account.getText().toString();
             String password = edit_password.getText().toString();
-            JSONObject ret = this.login(account,password);
+            JSONObject ret = this.login(account, password);
             if (ret.getBoolean(getString(R.string.response_success))) {
                 Identity.setToken(ret.getString(getString(R.string.response_token)));
-                if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
-                    Intent intent = new Intent();
-                    intent.setClass(login_page.this, customer_home.class);
-                    startActivity(intent);
-                } else if (Identity.getIdentity().equals(getString(R.string.id_store))) {
-                    Intent intent = new Intent();
-                    intent.setClass(login_page.this, store_home.class);
-                    startActivity(intent);
-                }
-            }else{
+                Intent intent = new Intent();
+                intent.setClass(login_page.this, home.class);
+                startActivity(intent);
+            } else {
                 utils.set_text_error_message(view, this.status, getString(R.string.login_failed));
             }
         } catch (JSONException e) {
@@ -73,7 +64,7 @@ public class login_page extends AppCompatActivity {
     }
 
 
-    private JSONObject login(String account,String password) throws JSONException {
+    private JSONObject login(String account, String password) throws JSONException {
         JSONObject resp;
         if (Identity.getIdentity().equals(getString(R.string.id_store))) {
             resp = Api_handler.merchant_login(account, password);

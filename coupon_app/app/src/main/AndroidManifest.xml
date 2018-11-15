@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".customer.customer_home"
+            android:name=".home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme">
 
@@ -54,7 +54,6 @@
         <activity android:name=".test_create_qrcode" />
         <activity android:name=".login_page" />
         <activity android:name=".store.store_drawer" />
-        <activity android:name=".store.store_home" />
         <activity android:name=".start_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
