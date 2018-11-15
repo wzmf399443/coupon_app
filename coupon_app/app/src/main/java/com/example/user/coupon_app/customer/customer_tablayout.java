@@ -45,35 +45,13 @@ public class customer_tablayout extends FragmentActivity {
         myViewPager = (ViewPager) findViewById(R.id.myViewPager);
         tabLayout = (TabLayout) findViewById(R.id.TabLayout);
 ////        myViewPager.setAdapter(new myadpter());
-        myViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+  //      myViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 //        tabLayout.setupWithViewPager(myViewPager);
 //        tabLayout.getTabAt(0).setText("可使用");
 //        tabLayout.getTabAt(1).setText("已使用");
 
 
 //        setTabLayoutIcon();
-    }
-
-    private class MyPagerAdapter extends FragmentPagerAdapter {
-
-        public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int pos) {
-            switch(pos) {
-
-                case 0: return coupon_list_available.newInstance("FirstFragment, Instance 1");
-                case 1: return coupon_list_used.newInstance("SecondFragment, Instance 1");
-                default: return coupon_list_available.newInstance("FirstFragment, Default");
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
     }
 
     public class myadpter extends PagerAdapter{

@@ -11,6 +11,7 @@ import com.example.user.coupon_app.Navigation_baseActivity;
 import com.example.user.coupon_app.R;
 import com.example.user.coupon_app.Util.Api_handler;
 import com.example.user.coupon_app.Util.utils;
+import com.example.user.coupon_app.home;
 
 import org.json.JSONObject;
 
@@ -52,7 +53,7 @@ public class store_issue_coupon extends Navigation_baseActivity {
             }
             Toast.makeText(this,getString(R.string.issue_coupon_success),Toast.LENGTH_LONG);
             Intent intent = new Intent();
-            intent.setClass(this, store_home.class);
+            intent.setClass(this, home.class);
             startActivity(intent);
         }catch (Exception e){
             e.printStackTrace();

@@ -14,11 +14,10 @@ import android.widget.FrameLayout;
 
 import com.example.user.coupon_app.Util.Identity;
 import com.example.user.coupon_app.customer.customer_gift;
-import com.example.user.coupon_app.customer.customer_home;
 import com.example.user.coupon_app.customer.customer_tablayout;
 import com.example.user.coupon_app.customer.customer_wallet;
-import com.example.user.coupon_app.store.store_home;
 import com.example.user.coupon_app.store.store_issue_coupon;
+import com.example.user.coupon_app.store.store_stop_grant;
 
 /**
  * Created by user on 2018/10/22.
@@ -150,7 +149,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
                         case R.id.action_home:
                             Intent intent = new Intent();
-                            intent.setClass(Navigation_baseActivity.this, store_home.class);
+                            intent.setClass(Navigation_baseActivity.this, home.class);
                             startActivity(intent);
                             overridePendingTransition(0, 0);
                             finish();
