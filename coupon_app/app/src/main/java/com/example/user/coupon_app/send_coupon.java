@@ -1,12 +1,10 @@
 package com.example.user.coupon_app;
 
-import android.content.Context;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,15 +13,12 @@ import android.widget.Toast;
 import com.example.user.coupon_app.NFC.OutcomingNfcManager;
 import com.example.user.coupon_app.Util.Identity;
 
-
-import java.io.Serializable;
-
 import static com.example.user.coupon_app.Util.utils.checkNFC;
 
 public class send_coupon extends Navigation_baseActivity implements OutcomingNfcManager.NfcActivity {
     private NfcAdapter nfcAdapter;
     private OutcomingNfcManager outcomingNfccallback;
-    private ConstraintLayout accept_view,sending_view,coupon_details_view;
+    private ConstraintLayout accept_view, sending_view, coupon_details_view;
     private ConstraintLayout coupon_view;
     private String[] message;
 
@@ -82,6 +77,28 @@ public class send_coupon extends Navigation_baseActivity implements OutcomingNfc
             this.nfcAdapter.setOnNdefPushCompleteCallback(outcomingNfccallback, this);
             this.nfcAdapter.setNdefPushMessageCallback(outcomingNfccallback, this);
         }
+
+        String method = getIntent().getStringExtra("method");
+        switch(method){
+            case "coupon_send":
+                this.coupon_send();
+                break;
+            case "coupon_pay":
+                this.coupon_pay();
+                break;
+            case "coupon_obtain_coupon":
+                this.coupon_obtain_coupon();
+                break;
+            case "coupon_receive":
+                this.coupon_receive();
+                break;
+            case "coupon_accept":
+                this.coupon_accept();
+                break;
+            case "issue_coupon":
+                this.issue_coupon();
+                break;
+        }
     }
 
     private void coupon_send() {
@@ -121,27 +138,27 @@ public class send_coupon extends Navigation_baseActivity implements OutcomingNfc
         this.set_show_coupon_message_content(entity);
     }
 
-    private void set_sending_message_text(String coupon_name){
+    private void set_sending_message_text(String coupon_name) {
         /* show help message */
         TextView textView_sending_coupon_name = sending_view.findViewById(R.id.textView_sending_coupon_name);
-        textView_sending_coupon_name.setText("sending coupon"+coupon_name);
+        textView_sending_coupon_name.setText("sending coupon" + coupon_name);
     }
 
-    private void set_accepting_content(){
+    private void set_accepting_content() {
         /* waiting progress bar */
         /* help message */
         accept_view.setVisibility(View.VISIBLE);
     }
 
-    private void set_show_coupon_message_content(Coupon_entity entity){
+    private void set_show_coupon_message_content(Coupon_entity entity) {
         /* show entity here */
         /* set consume value */
         coupon_details_view.setVisibility(View.VISIBLE);
         coupon_view.setVisibility(View.VISIBLE);
         this.set_coupon_layout(entity);
 
-        TextView textView_couponAddress,textView_limit,textView_obtainValue,textView_status,
-                textView_startDate,textView_obtainDate,textView_consumeDate;
+        TextView textView_couponAddress, textView_limit, textView_obtainValue, textView_status,
+                textView_startDate, textView_obtainDate, textView_consumeDate;
 
         /* coupon details view */
         textView_couponAddress = coupon_details_view.findViewById(R.id.textView_couponAddress);
@@ -161,7 +178,7 @@ public class send_coupon extends Navigation_baseActivity implements OutcomingNfc
         textView_consumeDate.setText(entity.getConsumeDate());
     }
 
-    private void set_coupon_layout(Coupon_entity entity){
+    private void set_coupon_layout(Coupon_entity entity) {
 
         TextView textView_name = coupon_view.findViewById(R.id.textview_coupon_name);
         TextView textView_expire_date = coupon_view.findViewById(R.id.textview_expire_date);
