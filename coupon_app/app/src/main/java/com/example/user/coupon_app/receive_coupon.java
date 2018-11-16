@@ -11,6 +11,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.coupon_app.urlConnector.HttpHandler;
@@ -22,6 +23,7 @@ public class receive_coupon extends Navigation_baseActivity {
     private final String MIME_TEXT_PLAIN = "text/plain";
     String Tag = "Receiver Activity";
     private NfcAdapter nfcAdapter;
+    private TextView textView_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class receive_coupon extends Navigation_baseActivity {
             finish();
         }
         this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        textView_message = findViewById(R.id.textView_message);
     }
 
 
@@ -69,9 +72,9 @@ public class receive_coupon extends Navigation_baseActivity {
             NdefRecord[] inNdefRecords = inNdefMessage.getRecords();
             NdefRecord ndefRecord_0 = inNdefRecords[0];
 
-            String url = new String(ndefRecord_0.getPayload());
-            Log.d(Tag, url);
-            new HttpHandler(url, "GET", null, null).execute();
+            /* TODO:fix here */
+            String text = new String(ndefRecord_0.getPayload());
+            this.textView_message.setText(text);
         }
     }
 

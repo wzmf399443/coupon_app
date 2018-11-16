@@ -61,7 +61,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
                         case R.id.action_home:
                             Intent intent = new Intent();
-                            intent.setClass(Navigation_baseActivity.this, customer_tablayout.class);
+                            intent.setClass(Navigation_baseActivity.this, home.class);
                             startActivity(intent);
                             overridePendingTransition(0, 0);
                             finish();

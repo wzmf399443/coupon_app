@@ -2,7 +2,9 @@ package com.example.user.coupon_app;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Coupon_entity {
+import java.io.Serializable;
+
+public class Coupon_entity implements Serializable {
 
     @SerializedName("merchant")
     private String coupon_name;
