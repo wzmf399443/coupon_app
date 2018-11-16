@@ -94,20 +94,6 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-                        case R.id.test_scan:
-                            Intent intent6 = new Intent();
-                            intent6.setClass(Navigation_baseActivity.this, test_coupon.class);
-                            startActivity(intent6);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            break;
-                        case R.id.test_create:
-                            Intent intent7 = new Intent();
-                            intent7.setClass(Navigation_baseActivity.this, test_create_qrcode.class);
-                            startActivity(intent7);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            break;
                     }
                 } else {//點擊當前項目時，收起Navigation
                     DL.closeDrawer(GravityCompat.START);
@@ -117,29 +103,6 @@ public class Navigation_baseActivity extends AppCompatActivity {
         });
     }
 
-//    public void setUpToolBar() {//設置ToolBar
-//        setSupportActionBar(toolbar);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DL.openDrawer(GravityCompat.START);
-//            }
-//        });
-//        //設定當使用者點擊ToolBar中的Navigation Icon時，Icon會隨著轉動
-//        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, DL, toolbar, R.string.drawer_open, R.string.drawer_close) {
-//            @Override
-//            public void onDrawerClosed(View drawerView) {
-//                super.onDrawerClosed(drawerView);
-//            }
-//
-//            @Override
-//            public void onDrawerOpened(View drawerView) {
-//                super.onDrawerOpened(drawerView);
-//            }
-//        };
-//        DL.addDrawerListener(actionBarDrawerToggle);
-//        actionBarDrawerToggle.syncState();
-//    }
     private void setUpNavigation_store() {
         // Set navigation item selected listener
         NV.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -182,20 +145,6 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-//                        case R.id.test_scan:
-//                            Intent intent6 = new Intent();
-//                            intent6.setClass(Navigation_baseActivity.this, test_coupon.class);
-//                            startActivity(intent6);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
-//                        case R.id.test_create:
-//                            Intent intent7 = new Intent();
-//                            intent7.setClass(Navigation_baseActivity.this, test_create_qrcode.class);
-//                            startActivity(intent7);
-//                            overridePendingTransition(0, 0);
-//                            finish();
-//                            break;
                     }
                 } else {//點擊當前項目時，收起Navigation
                     DL.closeDrawer(GravityCompat.START);
