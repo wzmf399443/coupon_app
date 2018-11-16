@@ -113,6 +113,11 @@ public class home extends Navigation_baseActivity {
                     Log.d("home", "coupon:" + position);
                     Intent intent = new Intent();
                     intent.putExtra("coupon", coupons.get(position));
+                    if(Identity.getIdentity().equals(getString(R.string.id_customer))){
+                        intent.putExtra("method","coupon_send");
+                    }else{
+                        intent.putExtra("method","issue_coupon");
+                    }
                     intent.setClass(home.this, login_page.class);
                     startActivity(intent);
                 }
