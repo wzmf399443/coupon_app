@@ -1,5 +1,6 @@
 package com.example.user.coupon_app;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,13 +9,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.coupon_app.Util.Api_handler;
 import com.example.user.coupon_app.Util.Identity;
@@ -111,8 +112,11 @@ public class home extends Navigation_baseActivity {
             listview.setAdapter(new ListCouponAdapter(this, R.layout.coupon_layout, coupons));
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Toast.makeText(home.this, "" + position,
-                            Toast.LENGTH_SHORT).show();
+                    Log.d("home", "coupon:" + position);
+                    Intent intent = new Intent();
+                    intent.putExtra("coupon", coupons.get(position));
+                    intent.setClass(home.this, login_page.class);
+                    startActivity(intent);
                 }
             });
         }

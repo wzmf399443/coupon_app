@@ -17,10 +17,8 @@ public class OutcomingNfcManager implements NfcAdapter.CreateNdefMessageCallback
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
-        // creating outcoming NFC message with a helper method
-        // you could as well create it manually and will surely need, if Android version is too low
-        String outString = activity.getOutcomingMessage();
-        byte[] outBytes = outString.getBytes();
+        String[] outString = activity.getOutcomingMessage();
+        byte[] outBytes = outString.toString().getBytes();
         NdefRecord outRecord = NdefRecord.createMime(MIME_TEXT_PLAIN, outBytes);
         return new NdefMessage(outRecord);
     }
@@ -36,7 +34,7 @@ public class OutcomingNfcManager implements NfcAdapter.CreateNdefMessageCallback
      * Callback to be implemented by a Sender activity
      * */
     public interface NfcActivity {
-        String getOutcomingMessage();
+        String[] getOutcomingMessage();
         void signalResult();
     }
 }
