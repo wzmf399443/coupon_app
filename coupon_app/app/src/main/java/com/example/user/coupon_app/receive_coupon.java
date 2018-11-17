@@ -10,11 +10,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.user.coupon_app.urlConnector.HttpHandler;
 
 import static com.example.user.coupon_app.Util.utils.checkNFC;
 
@@ -40,10 +37,11 @@ public class receive_coupon extends Navigation_baseActivity {
         /* Check is NFC supported and enable */
         if (!checkNFC(getApplicationContext())) {
             Toast.makeText(this, "Nfc is not supported on this device", Toast.LENGTH_SHORT).show();
-            finish();
+        }else{
+            this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+            textView_message = findViewById(R.id.textView_message);
         }
-        this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        textView_message = findViewById(R.id.textView_message);
+
     }
 
 

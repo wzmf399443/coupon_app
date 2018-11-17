@@ -68,7 +68,8 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_application_coupon:
                             Intent intent2 = new Intent();
-                            intent2.setClass(Navigation_baseActivity.this, receive_coupon.class);
+                            intent2.setClass(Navigation_baseActivity.this, send_coupon.class);
+                            intent2.putExtra("method","coupon_obtain_coupon");
                             startActivity(intent2);
                             overridePendingTransition(0, 0);
                             finish();
@@ -76,6 +77,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                         case R.id.action_application_pay:
                             Intent intent3 = new Intent();
                             intent3.setClass(Navigation_baseActivity.this, send_coupon.class);
+                            intent3.putExtra("method","coupon_pay");
                             startActivity(intent3);
                             overridePendingTransition(0, 0);
                             finish();
@@ -89,7 +91,8 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_gift:
                             Intent intent5 = new Intent();
-                            intent5.setClass(Navigation_baseActivity.this, customer_gift.class);
+                            intent5.setClass(Navigation_baseActivity.this, send_coupon.class);
+                            intent5.putExtra("method","coupon_receive");
                             startActivity(intent5);
                             overridePendingTransition(0, 0);
                             finish();
@@ -124,16 +127,10 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-                        case R.id.action_grant_coupon:
-                            Intent intent3 = new Intent();
-                            intent3.setClass(Navigation_baseActivity.this, send_coupon.class);
-                            startActivity(intent3);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            break;
                         case R.id.accept_coupon:
                             Intent intent4 = new Intent();
-                            intent4.setClass(Navigation_baseActivity.this, receive_coupon.class);
+                            intent4.setClass(Navigation_baseActivity.this, send_coupon.class);
+                            intent4.putExtra("method","coupon_accept");
                             startActivity(intent4);
                             overridePendingTransition(0, 0);
                             finish();

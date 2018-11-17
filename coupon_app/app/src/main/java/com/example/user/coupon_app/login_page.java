@@ -49,7 +49,7 @@ public class login_page extends AppCompatActivity {
             String account = edit_account.getText().toString();
             String password = edit_password.getText().toString();
             JSONObject ret = this.login(account, password);
-            if (ret.getBoolean(getString(R.string.response_success))) {
+            if (ret !=null && ret.getBoolean(getString(R.string.response_success))) {
                 Identity.setToken(ret.getString(getString(R.string.response_token)));
                 Intent intent = new Intent();
                 intent.setClass(login_page.this, home.class);
