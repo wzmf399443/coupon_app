@@ -74,21 +74,6 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             finish();
                             break;
-                        case R.id.action_application_pay:
-                            Intent intent3 = new Intent();
-                            intent3.setClass(Navigation_baseActivity.this, send_coupon.class);
-                            intent3.putExtra("method","coupon_pay");
-                            startActivity(intent3);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            break;
-                        case R.id.action_wallet:
-                            Intent intent4 = new Intent();
-                            intent4.setClass(Navigation_baseActivity.this, customer_wallet.class);
-                            startActivity(intent4);
-                            overridePendingTransition(0, 0);
-                            finish();
-                            break;
                         case R.id.action_gift:
                             Intent intent5 = new Intent();
                             intent5.setClass(Navigation_baseActivity.this, send_coupon.class);
