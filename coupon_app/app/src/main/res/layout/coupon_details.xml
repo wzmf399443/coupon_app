@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/coupon_layout" />
+    <include layout="@layout/coupon_layout"
+        android:id="@+id/layout_item"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/textView_couponAddress"

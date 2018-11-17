@@ -118,7 +118,7 @@ public class home extends Navigation_baseActivity {
                     }else{
                         intent.putExtra("method","issue_coupon");
                     }
-                    intent.setClass(home.this, login_page.class);
+                    intent.setClass(home.this, send_coupon.class);
                     startActivity(intent);
                 }
             });

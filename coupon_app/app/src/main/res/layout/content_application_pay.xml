@@ -12,6 +12,5 @@
     <include layout="@layout/sending_content" />
     <include layout="@layout/accept_content" />
     <include layout="@layout/coupon_details" />
-    <include layout="@layout/coupon_layout" />
 
 </android.support.constraint.ConstraintLayout>

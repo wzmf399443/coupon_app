@@ -19,7 +19,6 @@ public class send_coupon extends Navigation_baseActivity implements OutcomingNfc
     private NfcAdapter nfcAdapter;
     private OutcomingNfcManager outcomingNfccallback;
     private ConstraintLayout accept_view, sending_view, coupon_details_view;
-    private ConstraintLayout coupon_view;
     private String[] message;
 
     @Override
@@ -60,12 +59,10 @@ public class send_coupon extends Navigation_baseActivity implements OutcomingNfc
         accept_view = findViewById(R.id.accept_coupon);
         sending_view = findViewById(R.id.sending_content);
         coupon_details_view = findViewById(R.id.coupon_details);
-        coupon_view = findViewById(R.id.coupon_layout);
 
         accept_view.setVisibility(View.INVISIBLE);
         sending_view.setVisibility(View.INVISIBLE);
         coupon_details_view.setVisibility(View.INVISIBLE);
-        coupon_view.setVisibility(View.INVISIBLE);
 
         /* Check is NFC supported and enable */
         if (!checkNFC(getApplicationContext())) {
@@ -154,44 +151,36 @@ public class send_coupon extends Navigation_baseActivity implements OutcomingNfc
         /* show entity here */
         /* set consume value */
         coupon_details_view.setVisibility(View.VISIBLE);
-        coupon_view.setVisibility(View.VISIBLE);
-        this.set_coupon_layout(entity);
-
-        TextView textView_couponAddress, textView_limit, textView_obtainValue, textView_status,
-                textView_startDate, textView_obtainDate, textView_consumeDate;
+        coupon_details_view.findViewById(R.id.layout_item).setVisibility(View.VISIBLE);
 
         /* coupon details view */
-        textView_couponAddress = coupon_details_view.findViewById(R.id.textView_couponAddress);
-        textView_limit = coupon_details_view.findViewById(R.id.textView_limit);
-        textView_obtainValue = coupon_details_view.findViewById(R.id.textView_obtainValue);
-        textView_status = coupon_details_view.findViewById(R.id.textView_status);
-        textView_startDate = coupon_details_view.findViewById(R.id.textView_startDate);
-        textView_obtainDate = coupon_details_view.findViewById(R.id.textView_obtainDate);
-        textView_consumeDate = coupon_details_view.findViewById(R.id.textView_consumeDate);
+        TextView textView_couponAddress = coupon_details_view.findViewById(R.id.textView_couponAddress);
+        TextView textView_limit = coupon_details_view.findViewById(R.id.textView_limit);
+        TextView textView_obtainValue = coupon_details_view.findViewById(R.id.textView_obtainValue);
+        TextView textView_status = coupon_details_view.findViewById(R.id.textView_status);
+        TextView textView_startDate = coupon_details_view.findViewById(R.id.textView_startDate);
+        TextView textView_obtainDate = coupon_details_view.findViewById(R.id.textView_obtainDate);
+        TextView textView_consumeDate = coupon_details_view.findViewById(R.id.textView_consumeDate);
+
+        TextView textView_name = coupon_details_view.findViewById(R.id.textview_coupon_name);
+        TextView textView_expire_date = coupon_details_view.findViewById(R.id.textview_expire_date);
+        TextView textView_merchant = coupon_details_view.findViewById(R.id.textview_merchant);
+        TextView textView_value = coupon_details_view.findViewById(R.id.textview_value);
+        TextView textView_consume_value = coupon_details_view.findViewById(R.id.textview_consumerValue);
+        ImageView imageView = coupon_details_view.findViewById(R.id.imageview_coupon);
 
         textView_couponAddress.setText(entity.getCouponAddress());
-        textView_limit.setText(entity.getLimit());
-        textView_obtainValue.setText(entity.getObtainValue());
-        textView_status.setText(entity.getStatus());
+        textView_limit.setText(String.valueOf(entity.getLimit()));
+        textView_obtainValue.setText(String.valueOf(entity.getObtainValue()));
+        textView_status.setText(String.valueOf(entity.getStatus()));
         textView_startDate.setText(entity.getStartDate());
         textView_obtainDate.setText(entity.getObtainDate());
         textView_consumeDate.setText(entity.getConsumeDate());
-    }
-
-    private void set_coupon_layout(Coupon_entity entity) {
-
-        TextView textView_name = coupon_view.findViewById(R.id.textview_coupon_name);
-        TextView textView_expire_date = coupon_view.findViewById(R.id.textview_expire_date);
-        TextView textView_merchant = coupon_view.findViewById(R.id.textview_merchant);
-        TextView textView_value = coupon_view.findViewById(R.id.textview_value);
-        TextView textView_consume_value = coupon_view.findViewById(R.id.textview_consumerValue);
-
-        ImageView imageView = coupon_view.findViewById(R.id.imageview_coupon);
 
         textView_name.setText(entity.getCoupon_name());
         textView_expire_date.setText(entity.getExpire_date());
         textView_merchant.setText(entity.getCoupon_merchant());
-        textView_value.setText(entity.getCoupon_value());
+        textView_value.setText(String.valueOf(entity.getCoupon_value()));
         textView_consume_value.setText(String.valueOf(entity.getCoupon_consumerValue()));
 
         /* TODO:put images here */
