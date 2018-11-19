@@ -12,7 +12,9 @@
     <string name="title_activity_home">home</string>
     <string name="title_activity_application_pay">application_pay</string>
     <string name="title_activity_gift">gift</string>
-    <string name="title_activity_test_qrcode">test_qrcode</string>
+    <string name="title_issue_coupon">發行coupon</string>
+    <string name="title_stop_coupon">終止發放</string>
+
     <string name="get_coupon">get coupon</string>
     <string name="coupon">coupon</string>
     <string name="nfc_pay">NFC pay</string>
