@@ -27,7 +27,7 @@ public class ListCouponAdapter extends ArrayAdapter<Coupon_entity> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View coupon_view = inflater.inflate(R.layout.coupon_layout, parent, false);
+        View coupon_view = inflater.inflate(R.layout.content_coupon_layout, parent, false);
         TextView textView_name = coupon_view.findViewById(R.id.textview_coupon_name);
         TextView textView_expire_date = coupon_view.findViewById(R.id.textview_expire_date);
         TextView textView_merchant = coupon_view.findViewById(R.id.textview_merchant);

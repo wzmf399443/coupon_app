@@ -23,28 +23,8 @@
             android:label="@string/title_activity_wallet"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".receive_coupon"
-            android:label="@string/title_activity_application_coupon"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme">
-
-
-            </activity>
-
-        <activity
-            android:name=".send_coupon"
-            android:label="@string/title_activity_application_pay"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".customer.customer_gift"
@@ -64,11 +44,22 @@
         <activity android:name=".store.store_issue_coupon" />
         <activity android:name=".store.store_stop_grant" />
         <activity android:name=".register" />
-        <activity android:name=".customer.customer_tablayout">
-
-        </activity>
+        <activity android:name=".customer.customer_tablayout" />
         <activity android:name=".customer.coupon_list_available" />
-        <activity android:name=".customer.coupon_list_used"></activity>
+        <activity android:name=".customer.coupon_list_used" />
+        <activity android:name=".accept_coupon" />
+        <activity android:name=".coupon_details" />
+        <activity android:name=".sending_coupon" />
+        <activity
+            android:name=".coupon_receive"
+            android:label="@string/title_activity_coupon_receive"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

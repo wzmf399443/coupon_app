@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.example.user.coupon_app.Navigation_baseActivity;
 import com.example.user.coupon_app.R;
-import com.example.user.coupon_app.receive_coupon;
+import com.example.user.coupon_app.home;
 
 public class customer_wallet extends Navigation_baseActivity {
 
@@ -29,7 +29,7 @@ public class customer_wallet extends Navigation_baseActivity {
             @Override
             public void onClick(View v){
                 Intent intent=new Intent();
-                intent.setClass(customer_wallet.this,receive_coupon.class);
+                intent.setClass(customer_wallet.this,home.class);
                 startActivity(intent);
             }
         });
