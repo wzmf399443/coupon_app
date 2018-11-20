@@ -2,6 +2,10 @@ package com.example.user.coupon_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,12 +16,15 @@ public class sending_coupon extends nfc_base {
     TextView textView_sending_coupon_name;
     String complete_message;
     Intent intent = new Intent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sending_coupon);
         textView_sending_coupon_name = findViewById(R.id.textView_sending_coupon_name);
         initView();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         String method = getIntent().getStringExtra("method");
         switch(method){
@@ -28,10 +35,16 @@ public class sending_coupon extends nfc_base {
                 this.coupon_pay();
                 break;
             case "coupon_obtain_coupon":
+                toolbar.setTitle(R.string.title_application_coupon);//設置ToolBar Title
+                CurrentMenuItem = 1;//目前Navigation項目位置
                 this.coupon_obtain_coupon();
                 break;
         }
+        setSupportActionBar(toolbar);
+        setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
+        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
     }
+
 
     private void coupon_send() {
         Intent intent = getIntent();
@@ -52,6 +65,8 @@ public class sending_coupon extends nfc_base {
     }
 
     private void coupon_obtain_coupon() {
+
+
         String[] message = {Identity.getToken()};
         this.message = message;
         this.complete_message="obtain coupon complete";

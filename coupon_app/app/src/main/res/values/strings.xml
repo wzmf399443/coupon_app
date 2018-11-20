@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">coupon_app</string>
-    <string name="title_application_coupon">申請/使用coupon</string>
+    <string name="title_application_coupon">申請coupon</string>
     <string name="title_application_pay">申請支付</string>
-    <string name="title_gift">贈與</string>
+    <string name="title_gift">轉贈</string>
     <string name="title_home">首頁</string>
     <string name="title_wallet">查看錢包</string>
     <string name="drawer_open">open</string>
@@ -14,6 +14,7 @@
     <string name="title_activity_gift">gift</string>
     <string name="title_issue_coupon">發行coupon</string>
     <string name="title_stop_coupon">終止發放</string>
+    <string name="title_accept">批准優惠券</string>
 
     <string name="get_coupon">get coupon</string>
     <string name="coupon">coupon</string>
