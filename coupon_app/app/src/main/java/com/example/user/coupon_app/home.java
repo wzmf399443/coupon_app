@@ -62,14 +62,14 @@ public class home extends Navigation_baseActivity {
             vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_available, null));
             vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_used, null));
 
-            listview =(ListView)vlist.get(0).findViewById(R.id.listview_coupon);
-            tv_list_view=(TextView)vlist.get(0).findViewById(R.id.textView_show);
-            myViewPager.setAdapter(new myadapter(vlist,myViewPager));
+            listview = (ListView) vlist.get(0).findViewById(R.id.listview_coupon);
+            tv_list_view = (TextView) vlist.get(0).findViewById(R.id.textView_show);
+            myViewPager.setAdapter(new myadapter(vlist, myViewPager));
 
             Optional.ofNullable(
                     this.getCoupons(Api_handler.consumer_getCoupons())
             ).ifPresent(coupons::addAll);
-            setView(coupons,listview,tv_list_view);
+            setView(coupons, listview, tv_list_view);
 
             tabLayout.setupWithViewPager(myViewPager);
             tabLayout.getTabAt(0).setText("可使用");
@@ -80,16 +80,16 @@ public class home extends Navigation_baseActivity {
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_available, null));
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_historical, null));
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_unissued, null));
-            myViewPager.setAdapter(new myadapter(vlist,myViewPager));
+            myViewPager.setAdapter(new myadapter(vlist, myViewPager));
 
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUsedCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons,vlist.get(0));
+            setViewValue(coupons, vlist.get(0));
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUnusedCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons,vlist.get(1));
+            setViewValue(coupons, vlist.get(1));
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons,vlist.get(2));
+            setViewValue(coupons, vlist.get(2));
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getHistoryCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons,vlist.get(3));
+            setViewValue(coupons, vlist.get(3));
 
             tabLayout.setupWithViewPager(myViewPager);
             tabLayout.getTabAt(0).setText("已使用");
@@ -100,35 +100,38 @@ public class home extends Navigation_baseActivity {
 
 
     }
-    private void setView(List<Coupon_entity> coupons,ListView listview,TextView tv_list_view){
+
+    private void setView(List<Coupon_entity> coupons, ListView listview, TextView tv_list_view) {
         if (coupons.isEmpty()) {
             listview.setVisibility(View.INVISIBLE);
             tv_list_view.setVisibility(View.VISIBLE);
             tv_list_view.setTextColor(Color.RED);
             tv_list_view.setText(getString(R.string.listView_is_empty));
         } else {
-            listview.setAdapter(new ListCouponAdapter(this, R.layout.coupon_layout, coupons));
+            listview.setAdapter(new ListCouponAdapter(this, R.layout.content_coupon_layout, coupons));
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     Log.d("home", "coupon:" + position);
                     Intent intent = new Intent();
                     intent.putExtra("coupon", coupons.get(position));
-                    if(Identity.getIdentity().equals(getString(R.string.id_customer))){
-                        intent.putExtra("method","coupon_send");
-                    }else{
-                        intent.putExtra("method","issue_coupon");
+                    if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
+                        intent.setClass(home.this, sending_coupon.class);
+                        intent.putExtra("method", "coupon_send");
+                    } else {
+                        intent.setClass(home.this, coupon_details.class);
                     }
-                    intent.setClass(home.this, send_coupon.class);
                     startActivity(intent);
                 }
             });
         }
     }
-    private void setViewValue(List<Coupon_entity> coupons,View view){
-        listview =(ListView)view.findViewById(R.id.listview_coupon);
-        tv_list_view=(TextView)view.findViewById(R.id.textView_show);
-        setView(coupons,listview,tv_list_view);
+
+    private void setViewValue(List<Coupon_entity> coupons, View view) {
+        listview = (ListView) view.findViewById(R.id.listview_coupon);
+        tv_list_view = (TextView) view.findViewById(R.id.textView_show);
+        setView(coupons, listview, tv_list_view);
     }
+
     private List<Coupon_entity> getCoupons(JSONObject list_of_coupons) {
         if (list_of_coupons != null) {
             try {
@@ -147,33 +150,34 @@ public class home extends Navigation_baseActivity {
         return null;
     }
 
-    public class myadapter extends PagerAdapter{
+    public class myadapter extends PagerAdapter {
         List<View> vlist;
         ViewPager myViewPager;
-        public myadapter(List<View> vlist,ViewPager myViewPager){
-            this.vlist=vlist;
-            this.myViewPager=myViewPager;
+
+        public myadapter(List<View> vlist, ViewPager myViewPager) {
+            this.vlist = vlist;
+            this.myViewPager = myViewPager;
         }
-            @Override
-            public int getCount() {
+
+        @Override
+        public int getCount() {
             return this.vlist.size();
         }
 
-            @Override
-            public boolean isViewFromObject(View view, Object object) {
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
 
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
             this.myViewPager.addView(this.vlist.get(position));
             return this.vlist.get(position);
         }
 
-            @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
             myViewPager.removeView((LinearLayout) object);
         }
-
     }
 }

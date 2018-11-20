@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.user.coupon_app.NFC.nfc_base"
-    tools:showIn="@layout/activity_application_pay">
+    tools:context=".sending_coupon">
+
+    <include layout="@layout/content_sending" />
 
 </android.support.constraint.ConstraintLayout>

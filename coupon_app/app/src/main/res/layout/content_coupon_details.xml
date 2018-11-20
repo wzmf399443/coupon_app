@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/content_coupon_layout"/>
+
+    <TextView
+        android:id="@+id/textView_couponAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="couponAddress"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView_limit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="limit"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView_obtainValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="obtainValue"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="status"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView_startDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="startDate"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView_obtainDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="obtainDate"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView_consumeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="consumeDate"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+</android.support.constraint.ConstraintLayout>

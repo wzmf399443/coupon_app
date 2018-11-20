@@ -21,4 +21,5 @@
 
     <string name="id_store">store</string>
     <string name="id_customer">customer</string>
+    <string name="title_activity_coupon_receive">coupon_receive</string>
 </resources>
