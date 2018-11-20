@@ -43,7 +43,7 @@ public class ListCouponAdapter extends ArrayAdapter<Coupon_entity> {
         textView_consume_value.setText(String.valueOf(coupons.get(position).getCoupon_consumerValue()));
 
         /* TODO:put images here */
-        imageView.setImageResource(R.drawable.c_logo);
+        imageView.setImageResource(R.drawable.phone_coupon);
 
         return coupon_view;
     }
