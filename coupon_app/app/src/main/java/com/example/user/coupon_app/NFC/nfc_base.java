@@ -19,13 +19,6 @@ public abstract class nfc_base extends Navigation_baseActivity implements Outcom
     public String[] message;
     private String TAG = "NFC";
 
-    /*
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-    }
-    */
-
     @Override
     public String[] getOutcomingMessage() {
         return this.message;
@@ -46,14 +39,6 @@ public abstract class nfc_base extends Navigation_baseActivity implements Outcom
 
     @Override
     protected void onNewIntent(Intent intent) {
-        /*
-        super.onNewIntent(intent);
-        Log.i(TAG, "onNewIntent");
-
-        if (intent != null && NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
-            processNFCData(intent);
-        }
-        */
         setIntent(intent);
     }
 
