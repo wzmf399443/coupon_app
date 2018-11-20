@@ -6,13 +6,13 @@ import java.io.Serializable;
 
 public class Coupon_entity implements Serializable {
 
-    @SerializedName("merchant")
+    @SerializedName("couponName")
     private String coupon_name;
 
     @SerializedName("couponAddress")
     private String couponAddress;
 
-    @SerializedName("couponName")
+    @SerializedName("merchant")
     private String coupon_merchant;
 
     @SerializedName("value")
