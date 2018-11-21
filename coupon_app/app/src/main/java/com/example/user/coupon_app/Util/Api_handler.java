@@ -34,14 +34,12 @@ public class Api_handler {
 
     public static JSONObject post_to_server(JSONObject post_data, int api, boolean sent_header) throws ExecutionException, InterruptedException {
         Map header = sent_header ? get_header() : null;
-        return new HttpHandler(get_url(api),
-                HttpHandler.post, header, post_data).execute().get();
+        return new HttpHandler(get_url(api), HttpHandler.post, header, post_data).execute().get();
     }
 
     public static JSONObject get_from_server(int api, boolean sent_header) throws ExecutionException, InterruptedException {
         Map header = sent_header ? get_header() : null;
-        return new HttpHandler(get_url(api),
-                HttpHandler.get, header, null).execute().get();
+        return new HttpHandler(get_url(api), HttpHandler.get, header, null).execute().get();
     }
 
     public static JSONObject merchant_register(String account, String password, String name) {
@@ -98,14 +96,14 @@ public class Api_handler {
         }
     }
 
-    public static JSONObject merchant_grant(String consumer, int quantity, Date date, String mark, int obtainValue) {
+    public static JSONObject merchant_grant(String consumer, int quantity, String date, String mark, int obtainValue) {
         JSONObject post_data = new JSONObject();
 
         try {
             post_data.put("consumer", consumer);
             post_data.put("quantity", quantity);
             post_data.put("date", date);
-            post_data.put("mark", date);
+            post_data.put("mark", mark);
             post_data.put("obtainValue", obtainValue);
             return post_to_server(post_data, R.string.merchant_grant, true);
         } catch (JSONException e) {
@@ -117,7 +115,7 @@ public class Api_handler {
         }
     }
 
-    public static JSONObject merchant_confirmCouponPay(int consumeValue, Date consumeDate, String couponAddr, String consumer) {
+    public static JSONObject merchant_confirmCouponPay(int consumeValue, String consumeDate, String couponAddr, String consumer) {
         JSONObject post_data = new JSONObject();
 
         try {

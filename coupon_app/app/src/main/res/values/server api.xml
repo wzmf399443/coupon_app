@@ -14,15 +14,15 @@
     <string name="merchant_grant">&api_protocol;&api_server;&api_pendant;/merchant/grant</string>
     <string name="merchant_confirmCouponPay">&api_protocol;&api_server;&api_pendant;/merchant/confirmCouponPay</string>
     <string name="merchant_terminateCoupon">&api_protocol;&api_server;&api_pendant;/merchant/terminateCoupon</string>
-    <string name="merchant_getNotGivenCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getNotGivenCoupon</string>
-    <string name="merchant_getUnusedCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getUnusedCoupon</string>
-    <string name="merchant_getUsedCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getUsedCoupon</string>
-    <string name="merchant_getHistoryCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getHistoryCoupon</string>
+    <string name="merchant_getNotGivenCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getNotGivenCoupons</string>
+    <string name="merchant_getUnusedCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getUnusedCoupons</string>
+    <string name="merchant_getUsedCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getUsedCoupons</string>
+    <string name="merchant_getHistoryCoupon">&api_protocol;&api_server;&api_pendant;/merchant/getHistoryCoupons</string>
 
     <string name="consumer_register">&api_protocol;&api_server;&api_pendant;/consumer/register</string>
     <string name="consumer_login">&api_protocol;&api_server;&api_pendant;/consumer/login</string>
-    <string name="consumer_getCoupons">&api_protocol;&api_server;&api_pendant;/consumer/transfer</string>
-    <string name="consumer_transfer">&api_protocol;&api_server;&api_pendant;/consumer/getCoupons</string>
+    <string name="consumer_getCoupons">&api_protocol;&api_server;&api_pendant;/consumer/getCoupons</string>
+    <string name="consumer_transfer">&api_protocol;&api_server;&api_pendant;/consumer/transfer</string>
 
     <string name="response_success">success</string>
     <string name="response_message">message</string>

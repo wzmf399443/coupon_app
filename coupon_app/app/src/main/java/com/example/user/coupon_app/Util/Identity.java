@@ -3,6 +3,7 @@ package com.example.user.coupon_app.Util;
 public class Identity {
     private static String token;
     private static String identity;
+    private static String contractAddress;
 
     public static String getToken() {
         return token;
@@ -19,4 +20,8 @@ public class Identity {
     public static void setIdentity(String identity) {
         Identity.identity = identity;
     }
+
+    public static String getContractAddress() {return contractAddress;}
+
+    public static void setContractAddress(String contractAddress) {Identity.contractAddress = contractAddress;}
 }

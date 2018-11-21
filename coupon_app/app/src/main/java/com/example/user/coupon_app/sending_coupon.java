@@ -15,7 +15,6 @@ import com.example.user.coupon_app.Util.Identity;
 public class sending_coupon extends nfc_base {
     TextView textView_sending_coupon_name;
     String complete_message;
-    Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +26,9 @@ public class sending_coupon extends nfc_base {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         String method = getIntent().getStringExtra("method");
-        switch(method){
-            case "coupon_send":
-                this.coupon_send();
+        switch (method) {
+            case "coupon_receive":
+                this.coupon_receive();
                 break;
             case "coupon_pay":
                 this.coupon_pay();
@@ -45,38 +44,25 @@ public class sending_coupon extends nfc_base {
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
     }
 
-
-    private void coupon_send() {
-        Intent intent = getIntent();
-        String[] message = {intent.getStringExtra("coupon")};
+    private void coupon_receive() {
+        String[] message = {Identity.getContractAddress()};
         this.message = message;
-        this.complete_message="send complete";
-        this.intent.setClass(this,home.class);
-        this.set_sending_message_text(message[0]);
+        this.complete_message = "send complete";
+        textView_sending_coupon_name.setText("receive coupon...");
     }
 
     private void coupon_pay() {
-        Intent intent = getIntent();
-        String[] message = {intent.getStringExtra("coupon"), Identity.getToken()};
+        String[] message = {getIntent().getStringExtra("coupon"), Identity.getContractAddress()};
         this.message = message;
-        this.complete_message="pay complete";
-        this.intent.setClass(this,home.class);
-        this.set_sending_message_text(message[0]);
+        this.complete_message = "pay complete";
+        textView_sending_coupon_name.setText("sending coupon...");
     }
 
     private void coupon_obtain_coupon() {
-
-
-        String[] message = {Identity.getToken()};
+        String[] message = {Identity.getContractAddress()};
         this.message = message;
-        this.complete_message="obtain coupon complete";
-        this.intent.setClass(this,home.class);
+        this.complete_message = "obtain coupon complete";
         textView_sending_coupon_name.setText("getting coupon...");
-    }
-
-    private void set_sending_message_text(String coupon_name) {
-        /* show help message */
-        textView_sending_coupon_name.setText("sending coupon" + coupon_name);
     }
 
     @Override
@@ -86,6 +72,7 @@ public class sending_coupon extends nfc_base {
         // cause onNdefPushComplete is called from the Binder thread
         runOnUiThread(() ->
                 Toast.makeText(this, this.complete_message, Toast.LENGTH_SHORT).show());
+        Intent intent = new Intent().setClass(sending_coupon.this, home.class);
         startActivity(intent);
     }
 }
