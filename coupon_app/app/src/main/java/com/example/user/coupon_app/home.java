@@ -65,9 +65,7 @@ public class home extends Navigation_baseActivity {
             tv_list_view = (TextView) vlist.get(0).findViewById(R.id.textView_show);
             myViewPager.setAdapter(new myadapter(vlist, myViewPager));
 
-            Optional.ofNullable(
-                    this.getCoupons(Api_handler.consumer_getCoupons())
-            ).ifPresent(coupons::addAll);
+            Optional.ofNullable(this.getCoupons(Api_handler.consumer_getCoupons())).ifPresent(coupons::addAll);
             setView(coupons, listview, tv_list_view);
 
             tabLayout.setupWithViewPager(myViewPager);
@@ -112,12 +110,7 @@ public class home extends Navigation_baseActivity {
                     Log.d("home", "coupon:" + position);
                     Intent intent = new Intent();
                     intent.putExtra("coupon", coupons.get(position));
-                    if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
-                        intent.setClass(home.this, sending_coupon.class);
-                        intent.putExtra("method", "coupon_send");
-                    } else {
-                        intent.setClass(home.this, coupon_details.class);
-                    }
+                    intent.setClass(home.this, coupon_details.class);
                     startActivity(intent);
                 }
             });

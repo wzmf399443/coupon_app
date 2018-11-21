@@ -18,11 +18,11 @@ public class OutcomingNfcManager implements NfcAdapter.CreateNdefMessageCallback
     @Override
     public NdefMessage createNdefMessage(NfcEvent event) {
         String[] outString = activity.getOutcomingMessage();
-        NdefMessage msg = new NdefMessage(
-                new NdefRecord[]{NdefRecord.createMime(
-                        MIME_TEXT_PLAIN, outString[0].getBytes())
-                        //,NdefRecord.createApplicationRecord("com.example.android.beam")
-                });
+        NdefRecord records[] = new NdefRecord[outString.length];
+        for (int i = 0; i < outString.length; ++i) {
+            records[i] = NdefRecord.createMime(MIME_TEXT_PLAIN, outString[i].getBytes());
+        }
+        NdefMessage msg = new NdefMessage(records);
         return msg;
     }
 

@@ -47,19 +47,15 @@
         <activity android:name=".customer.customer_tablayout" />
         <activity android:name=".customer.coupon_list_available" />
         <activity android:name=".customer.coupon_list_used" />
-        <activity android:name=".accept_coupon" />
-        <activity android:name=".coupon_details" />
-        <activity android:name=".sending_coupon" />
-        <activity
-            android:name=".coupon_receive"
-            android:label="@string/title_activity_coupon_receive"
-            android:theme="@style/AppTheme">
+        <activity android:name=".accept_coupon" >
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <activity android:name=".coupon_details" />
+        <activity android:name=".sending_coupon" />
     </application>
 
 </manifest>

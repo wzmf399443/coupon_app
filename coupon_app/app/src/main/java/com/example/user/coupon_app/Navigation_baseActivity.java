@@ -109,7 +109,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                             break;
                         case R.id.action_gift:
                             Intent intent5 = new Intent();
-                            intent5.setClass(Navigation_baseActivity.this, accept_coupon.class);
+                            intent5.setClass(Navigation_baseActivity.this, sending_coupon.class);
                             intent5.putExtra("method","coupon_receive");
                             startActivity(intent5);
                             overridePendingTransition(0, 0);
@@ -148,6 +148,7 @@ public class Navigation_baseActivity extends AppCompatActivity {
                         case R.id.accept_coupon:
                             Intent intent4 = new Intent();
                             intent4.setClass(Navigation_baseActivity.this, accept_coupon.class);
+                            intent4.putExtra("method","coupon_accept");
                             startActivity(intent4);
                             overridePendingTransition(0, 0);
                             finish();
