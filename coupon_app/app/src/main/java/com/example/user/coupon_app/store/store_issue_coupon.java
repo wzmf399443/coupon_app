@@ -1,9 +1,12 @@
 package com.example.user.coupon_app.store;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +18,8 @@ import com.example.user.coupon_app.Util.utils;
 import com.example.user.coupon_app.home;
 
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class store_issue_coupon extends Navigation_baseActivity {
     TextView tv_status;
@@ -44,6 +49,49 @@ public class store_issue_coupon extends Navigation_baseActivity {
         edit_quantity = findViewById(R.id.editText_quantity);
         edit_start = findViewById(R.id.editText_start);
         edit_end = findViewById(R.id.editText_end);
+        edit_start.setInputType(InputType.TYPE_NULL);
+        edit_end.setInputType(InputType.TYPE_NULL);
+        edit_start.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    showDatePickerDialog(edit_start);
+                }
+            }
+        });
+        edit_start.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(edit_start);
+            }
+        });
+        edit_end.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    showDatePickerDialog(edit_end);
+                }
+            }
+        });
+        edit_end.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(edit_end);
+            }
+        });
+    }
+    public void showDatePickerDialog(EditText edit_text){
+        Calendar c = Calendar.getInstance();
+        new DatePickerDialog(store_issue_coupon.this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                edit_text.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth);
+            }
+        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
+
     }
 
     public void issue_coupon(View view) {
