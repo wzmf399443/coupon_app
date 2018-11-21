@@ -51,6 +51,7 @@ public class login_page extends AppCompatActivity {
             JSONObject ret = this.login(account, password);
             if (ret !=null && ret.getBoolean(getString(R.string.response_success))) {
                 Identity.setToken(ret.getString(getString(R.string.response_token)));
+                login_page.this.finish();
                 Intent intent = new Intent();
                 intent.setClass(login_page.this, home.class);
                 startActivity(intent);
