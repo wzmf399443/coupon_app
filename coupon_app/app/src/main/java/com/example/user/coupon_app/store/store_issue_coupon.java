@@ -30,7 +30,7 @@ public class store_issue_coupon extends Navigation_baseActivity {
         setContentView(R.layout.activity_store_issue_coupon);
 
         Toolbar toolbar = findViewById(R.id.toolbar_store);
-        toolbar.setTitle(R.string.title_stop_coupon);//設置ToolBar Title
+        toolbar.setTitle(R.string.title_issue_coupon);//設置ToolBar Title
         setSupportActionBar(toolbar);
 
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
