@@ -1,13 +1,16 @@
 package com.example.user.coupon_app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.annotation.LayoutRes;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -32,6 +35,8 @@ public class Navigation_baseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView (@LayoutRes int layoutresID){
+
+
         if (Identity.getIdentity().equals(getString(R.string.id_customer))){
             DL = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
             FL = (FrameLayout) DL.findViewById(R.id.content_frame);
@@ -50,6 +55,34 @@ public class Navigation_baseActivity extends AppCompatActivity {
             toolbar = (Toolbar) findViewById(R.id.toolbar_store);
             setUpNavigation_store();
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {//捕捉返回鍵
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            ConfirmExit();//按返回鍵，則執行退出確認
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    public void ConfirmExit(){//退出確認
+        AlertDialog.Builder ad=new AlertDialog.Builder(Navigation_baseActivity.this);
+        ad.setTitle("登出");
+        ad.setMessage("確定要登出嗎?");
+        ad.setPositiveButton("是", new DialogInterface.OnClickListener() {//退出按鈕
+            public void onClick(DialogInterface dialog, int i) {
+                // TODO Auto-generated method stub
+                Navigation_baseActivity.this.finish();//關閉activity
+                Intent intent = new Intent();
+                intent.setClass(Navigation_baseActivity.this, login_page.class);
+                startActivity(intent);
+            }
+        });
+        ad.setNegativeButton("否",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int i) {
+                //不退出不用執行任何操作
+            }
+        });
+        ad.show();//顯示對話框
     }
 
     private void setUpNavigation_cus() {

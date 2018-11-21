@@ -60,7 +60,6 @@ public class home extends Navigation_baseActivity {
 
         if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
             vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_available, null));
-            vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_used, null));
 
             listview = (ListView) vlist.get(0).findViewById(R.id.listview_coupon);
             tv_list_view = (TextView) vlist.get(0).findViewById(R.id.textView_show);
@@ -73,7 +72,6 @@ public class home extends Navigation_baseActivity {
 
             tabLayout.setupWithViewPager(myViewPager);
             tabLayout.getTabAt(0).setText("可使用");
-            tabLayout.getTabAt(1).setText("已使用");
 
         } else {
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_used, null));
