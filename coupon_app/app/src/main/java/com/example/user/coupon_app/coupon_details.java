@@ -1,5 +1,6 @@
 package com.example.user.coupon_app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.user.coupon_app.Util.Api_handler;
 import com.example.user.coupon_app.Util.Identity;
 
 public class coupon_details extends AppCompatActivity {
@@ -85,7 +82,7 @@ public class coupon_details extends AppCompatActivity {
     private View.OnClickListener btn1_button = new View.OnClickListener() {
         public void onClick(View v) {
             intent.putExtra("method", "coupon_pay");
-            intent.setClass(coupon_details.this,sending_coupon.class);
+            intent.setClass(coupon_details.this, sending_coupon.class);
             popupWindow.dismiss();
             startActivity(intent);
         }
@@ -115,13 +112,6 @@ public class coupon_details extends AppCompatActivity {
         TextView textView_obtainDate = findViewById(R.id.textView_obtainDate);
         TextView textView_consumeDate = findViewById(R.id.textView_consumeDate);
 
-        TextView textView_name = findViewById(R.id.textview_coupon_name);
-        TextView textView_expire_date = findViewById(R.id.textview_expire_date);
-        TextView textView_merchant = findViewById(R.id.textview_merchant);
-        TextView textView_value = findViewById(R.id.textview_value);
-        TextView textView_consume_value = findViewById(R.id.textview_consumerValue);
-        ImageView imageView = findViewById(R.id.imageview_coupon);
-
         textView_couponAddress.setText(entity.getCouponAddress());
         textView_limit.setText(String.valueOf(entity.getLimit()));
         textView_obtainValue.setText(String.valueOf(entity.getObtainValue()));
@@ -130,13 +120,8 @@ public class coupon_details extends AppCompatActivity {
         textView_obtainDate.setText(entity.getObtainDate());
         textView_consumeDate.setText(entity.getConsumeDate());
 
-        textView_name.setText(entity.getCoupon_name());
-        textView_expire_date.setText(entity.getExpire_date());
-        textView_merchant.setText(entity.getCoupon_merchant());
-        textView_value.setText(String.valueOf(entity.getCoupon_value()));
-        textView_consume_value.setText(String.valueOf(entity.getCoupon_consumerValue()));
-
-        /* TODO:put images here */
-        imageView.setImageResource(R.drawable.phone_coupon);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View coupon_view = inflater.inflate(R.layout.content_coupon_layout, null, false);
+        ListCouponAdapter.set_coupon_layout_view(coupon_view, entity);
     }
 }
