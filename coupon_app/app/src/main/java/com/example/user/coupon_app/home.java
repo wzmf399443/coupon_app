@@ -104,6 +104,7 @@ public class home extends Navigation_baseActivity {
             tv_list_view.setTextColor(Color.RED);
             tv_list_view.setText(getString(R.string.listView_is_empty));
         } else {
+            tv_list_view.setVisibility(View.INVISIBLE);
             listview.setAdapter(new ListCouponAdapter(this, R.layout.content_coupon_layout, coupons));
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
