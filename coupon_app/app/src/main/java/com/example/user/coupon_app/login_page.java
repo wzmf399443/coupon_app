@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,7 +53,7 @@ public class login_page extends AppCompatActivity {
             if (ret !=null && ret.getBoolean(getString(R.string.response_success))) {
                 Identity.setToken(ret.getString(getString(R.string.response_token)));
                 Identity.setContractAddress(ret.optString(getString(R.string.response_contractAddress),null));
-
+                login_page.this.finish();
                 Intent intent = new Intent();
                 intent.setClass(login_page.this, home.class);
                 startActivity(intent);
@@ -63,6 +64,17 @@ public class login_page extends AppCompatActivity {
             e.printStackTrace();
             utils.set_text_error_message(view, this.status, getString(R.string.login_failed));
         }
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {//捕捉返回鍵
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            login_page.this.finish();//關閉activity
+            Intent intent = new Intent();
+            intent.setClass(login_page.this, start_page.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 

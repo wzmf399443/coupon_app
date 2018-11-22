@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.user.coupon_app.Util.Identity;
 
-public class coupon_details extends AppCompatActivity {
+public class coupon_details extends Navigation_baseActivity {
     private String TAG = "coupon details";
     private Button btn_qrcode, btn_nfc;
     private Coupon_entity entity;
@@ -29,6 +30,7 @@ public class coupon_details extends AppCompatActivity {
         btn_qrcode = findViewById(R.id.button_qrcode);
         btn_nfc = findViewById(R.id.button_nfc);
 
+        toolbar.setTitle(R.string.title_detail);//設置ToolBar Title
         /* TODO:implement QRcode */
         btn_qrcode.setOnClickListener(view -> {
         });
@@ -36,6 +38,19 @@ public class coupon_details extends AppCompatActivity {
         btn_nfc.setOnClickListener(view -> {
             choose();
         });
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {//捕捉返回鍵
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            coupon_details.this.finish();//關閉activity
+            Intent intent = new Intent();
+            intent.setClass(coupon_details.this, home.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void choose() {
@@ -84,6 +99,7 @@ public class coupon_details extends AppCompatActivity {
             intent.putExtra("method", "coupon_pay");
             intent.setClass(coupon_details.this, sending_coupon.class);
             popupWindow.dismiss();
+            coupon_details.this.finish();//關閉activity
             startActivity(intent);
         }
     };
@@ -93,6 +109,7 @@ public class coupon_details extends AppCompatActivity {
             intent.putExtra("method", "coupon_send");
             intent.setClass(coupon_details.this, accept_coupon.class);
             popupWindow.dismiss();
+            coupon_details.this.finish();//關閉activity
             startActivity(intent);
         }
     };

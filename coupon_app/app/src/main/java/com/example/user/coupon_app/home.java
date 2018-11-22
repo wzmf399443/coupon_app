@@ -79,19 +79,20 @@ public class home extends Navigation_baseActivity {
             myViewPager.setAdapter(new myadapter(vlist, myViewPager));
 
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUsedCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons, vlist.get(0));
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUnusedCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons, vlist.get(1));
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons::addAll);
             setViewValue(coupons, vlist.get(2));
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getHistoryCoupon())).ifPresent(coupons::addAll);
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUnusedCoupon())).ifPresent(coupons::addAll);
+            setViewValue(coupons, vlist.get(0));
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons::addAll);
             setViewValue(coupons, vlist.get(3));
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getHistoryCoupon())).ifPresent(coupons::addAll);
+            setViewValue(coupons, vlist.get(1));
 
             tabLayout.setupWithViewPager(myViewPager);
-            tabLayout.getTabAt(0).setText("已使用");
-            tabLayout.getTabAt(1).setText("未使用");
-            tabLayout.getTabAt(2).setText("歷史紀錄");
-            tabLayout.getTabAt(3).setText("未發放");
+            tabLayout.getTabAt(2).setText("已使用");
+            tabLayout.getTabAt(0).setText("未使用");
+            tabLayout.getTabAt(3).setText("歷史紀錄");
+            tabLayout.getTabAt(1).setText("未發放");
+
         }
 
 
@@ -110,6 +111,7 @@ public class home extends Navigation_baseActivity {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     Log.d("home", "coupon:" + position);
                     Intent intent = new Intent();
+                    home.this.finish();//關閉activity
                     intent.putExtra("coupon", coupons.get(position));
                     intent.setClass(home.this, coupon_details.class);
                     startActivity(intent);
