@@ -19,16 +19,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".customer.customer_wallet"
-            android:label="@string/title_activity_wallet"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".customer.customer_gift"
-            android:label="@string/title_activity_gift"
             android:theme="@style/AppTheme" />
         <activity android:name=".test_coupon" />
         <activity android:name=".test_create_qrcode" />
@@ -44,7 +36,6 @@
         <activity android:name=".store.store_issue_coupon" />
         <activity android:name=".store.store_stop_grant" />
         <activity android:name=".register" />
-        <activity android:name=".customer.customer_tablayout" />
         <activity android:name=".customer.coupon_list_available" />
         <activity android:name=".customer.coupon_list_used" />
         <activity android:name=".accept_coupon" >
