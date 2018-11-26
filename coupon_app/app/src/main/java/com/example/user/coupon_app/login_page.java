@@ -57,7 +57,8 @@ public class login_page extends AppCompatActivity {
                 intent.setClass(login_page.this, home.class);
                 startActivity(intent);
             } else {
-                utils.set_text_error_message(view, this.status, getString(R.string.login_failed));
+                String message = ret.optString("message");
+                utils.set_text_error_message(view, this.status, message);
             }
         } catch (JSONException e) {
             e.printStackTrace();
