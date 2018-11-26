@@ -3,6 +3,7 @@ package com.example.user.coupon_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.example.user.coupon_app.Util.Api_handler;
@@ -29,5 +30,15 @@ public class start_page extends AppCompatActivity {
         Intent store = new Intent();
         store.setClass(start_page.this,login_page.class);
         startActivity(store);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {//捕捉返回鍵
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            start_page.this.finish();//關閉activity
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
