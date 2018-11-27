@@ -98,7 +98,7 @@ public class store_issue_coupon extends Navigation_baseActivity {
 
         try {
             JSONObject resp = Api_handler.merchant_issueCoupon(
-                    tv_status.getText().toString(),
+                    edit_name.getText().toString(),
                     Integer.valueOf(edit_value.getText().toString()),
                     Integer.valueOf(edit_limit.getText().toString()),
                     Integer.valueOf(edit_quantity.getText().toString()),
