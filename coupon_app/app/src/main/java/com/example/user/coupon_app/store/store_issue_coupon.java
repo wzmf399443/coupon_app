@@ -98,20 +98,21 @@ public class store_issue_coupon extends Navigation_baseActivity {
 
         try {
             JSONObject resp = Api_handler.merchant_issueCoupon(
-                    tv_status.getText().toString(),
+                    edit_name.getText().toString(),
                     Integer.valueOf(edit_value.getText().toString()),
                     Integer.valueOf(edit_limit.getText().toString()),
                     Integer.valueOf(edit_quantity.getText().toString()),
                     edit_start.getText().toString(),
                     edit_end.getText().toString()
             );
-            if (resp == null || !resp.getBoolean(getString(R.string.response_success))) {
-                utils.set_text_error_message(view,tv_status,getString(R.string.issue_coupon_failed));
+            if (resp != null && resp.getBoolean(getString(R.string.response_success))) {
+                Toast.makeText(this,getString(R.string.issue_coupon_success),Toast.LENGTH_LONG);
+                Intent intent = new Intent();
+                intent.setClass(this, home.class);
+                startActivity(intent);
+            }else{
+                utils.set_text_error_message(view,tv_status,resp.optString("message"));
             }
-            Toast.makeText(this,getString(R.string.issue_coupon_success),Toast.LENGTH_LONG);
-            Intent intent = new Intent();
-            intent.setClass(this, home.class);
-            startActivity(intent);
         }catch (Exception e){
             e.printStackTrace();
             utils.set_text_error_message(view,tv_status,getString(R.string.issue_coupon_failed));

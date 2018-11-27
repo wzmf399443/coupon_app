@@ -137,8 +137,6 @@ public class coupon_details extends Navigation_baseActivity {
         textView_obtainDate.setText(entity.getObtainDate());
         textView_consumeDate.setText(entity.getConsumeDate());
 
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View coupon_view = inflater.inflate(R.layout.content_coupon_layout, null, false);
-        ListCouponAdapter.set_coupon_layout_view(coupon_view, entity);
+        ListCouponAdapter.set_coupon_layout_view(this.findViewById(android.R.id.content).getRootView(), entity);
     }
 }
