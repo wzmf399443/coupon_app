@@ -37,7 +37,6 @@
         <activity android:name=".store.store_stop_grant" />
         <activity android:name=".register" />
         <activity android:name=".customer.coupon_list_available" />
-        <activity android:name=".customer.coupon_list_used" />
         <activity android:name=".accept_coupon" >
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />

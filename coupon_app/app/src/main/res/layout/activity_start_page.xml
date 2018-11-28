@@ -8,44 +8,6 @@
     tools:context=".start_page">
 
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="92dp"
-        android:layout_height="103dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@null"
-        android:onClick="go_store"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintHorizontal_bias="0.385"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875"
-        app:srcCompat="@drawable/button_store" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="80dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:layout_marginBottom="8dp"
-        android:background="@null"
-        android:onClick="go_cusmer"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876"
-        app:srcCompat="@drawable/button_user" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="243dp"
@@ -79,42 +41,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="116dp"
+        android:layout_height="39dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="go_store"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="1"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:text="商家"
-        android:textSize="30sp"
+        android:textColor="#00D9D2"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintVertical_bias="0.759" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="121dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="go_cusmer"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="1"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:text="消費者"
-        android:textSize="30sp"
+        android:textColor="#00D9D2"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintVertical_bias="0.762" />
 
 </android.support.constraint.ConstraintLayout>
