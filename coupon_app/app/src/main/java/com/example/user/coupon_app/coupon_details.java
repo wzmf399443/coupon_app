@@ -1,9 +1,7 @@
 package com.example.user.coupon_app;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,7 +15,7 @@ import com.example.user.coupon_app.Util.Identity;
 
 public class coupon_details extends Navigation_baseActivity {
     private String TAG = "coupon details";
-    private Button btn_qrcode, btn_nfc;
+    private Button btn_send;
     private Coupon_entity entity;
     private PopupWindow popupWindow;
     private Intent intent = new Intent();
@@ -27,18 +25,10 @@ public class coupon_details extends Navigation_baseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon_details);
         issue_coupon();
-        btn_qrcode = findViewById(R.id.button_qrcode);
-        btn_nfc = findViewById(R.id.button_nfc);
-
+        btn_send = findViewById(R.id.button_nfc);
         toolbar.setTitle(R.string.title_detail);//設置ToolBar Title
-        /* TODO:implement QRcode */
-        btn_qrcode.setOnClickListener(view -> {
-        });
 
-        btn_nfc.setOnClickListener(view -> {
-            choose();
-        });
-
+        btn_send.setOnClickListener(view -> choose());
     }
 
     @Override
@@ -60,9 +50,9 @@ public class coupon_details extends Navigation_baseActivity {
         } else {
             intent.putExtra("method", "coupon_issue_for");
             intent.setClass(this, accept_coupon.class);
+            coupon_details.this.finish();//關閉activity
             startActivity(intent);
         }
-
     }
 
     private void showPopup() {
