@@ -95,10 +95,10 @@ public class home extends Navigation_baseActivity {
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUsedCoupon())).ifPresent(coupons_used::addAll);
             Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons_notgiven::addAll);
 
-            setViewValue(coupons_notgiven, vlist.get(0));
-            setViewValue(coupons_unused, vlist.get(1));
-            setViewValue(coupons_used, vlist.get(2));
-            setViewValue(coupons_history, vlist.get(3));
+            setViewValue(coupons_notgiven, vlist.get(1));
+            setViewValue(coupons_unused, vlist.get(3));
+            setViewValue(coupons_used, vlist.get(0));
+            setViewValue(coupons_history, vlist.get(2));
 
             tabLayout.getTabAt(0).setText("未發放");
             tabLayout.getTabAt(1).setText("未使用");
