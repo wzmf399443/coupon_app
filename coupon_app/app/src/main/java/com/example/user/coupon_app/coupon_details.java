@@ -1,7 +1,9 @@
 package com.example.user.coupon_app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -57,52 +59,35 @@ public class coupon_details extends Navigation_baseActivity {
 
     private void showPopup() {
         try {
+            AlertDialog.Builder ad=new AlertDialog.Builder(coupon_details.this);
+            ad.setTitle("傳送方式");
+            ad.setMessage("支付/贈送?");
+            ad.setPositiveButton("支付優惠券", new DialogInterface.OnClickListener() {//退出按鈕
+                public void onClick(DialogInterface dialog, int i) {
+                    // TODO Auto-generated method stub
+                    intent.putExtra("method", "coupon_pay");
+                    intent.setClass(coupon_details.this, sending_coupon.class);
+                    coupon_details.this.finish();//關閉activity
+                    startActivity(intent);
+                }
+            });
+            ad.setNegativeButton("贈送優惠券",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int i) {
+                    //不退出不用執行任何操作
+                    intent.putExtra("method", "coupon_send");
+                    intent.setClass(coupon_details.this, accept_coupon.class);
+                    coupon_details.this.finish();//關閉activity
+                    startActivity(intent);
+                }
+            });
+            ad.show();//顯示對話框
             // We need to get the instance of the LayoutInflater
-            View view = LayoutInflater.from(this).inflate(R.layout.popup, null);
-            popupWindow = new PopupWindow(this);
-            popupWindow.setContentView(view);
-            popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-            popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
-            View rootView = LayoutInflater.from(this).inflate(R.layout.activity_coupon_details, null);
-            popupWindow.showAtLocation(rootView, Gravity.BOTTOM, 0, 0);
-            popupWindow.setOutsideTouchable(true);
-
-            TextView text_message = view.findViewById(R.id.textView);
-            text_message.setText("支付/贈送?");
-
-            Button btn1 = view.findViewById(R.id.button_yes);
-            btn1.setOnClickListener(btn1_button);
-            btn1.setText("支付優惠券");
-
-            Button btn2 = view.findViewById(R.id.button_no);
-            btn2.setOnClickListener(btn2_button);
-            btn2.setText("贈送優惠券");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    private View.OnClickListener btn1_button = new View.OnClickListener() {
-        public void onClick(View v) {
-            intent.putExtra("method", "coupon_pay");
-            intent.setClass(coupon_details.this, sending_coupon.class);
-            popupWindow.dismiss();
-            coupon_details.this.finish();//關閉activity
-            startActivity(intent);
-        }
-    };
-
-    private View.OnClickListener btn2_button = new View.OnClickListener() {
-        public void onClick(View v) {
-            intent.putExtra("method", "coupon_send");
-            intent.setClass(coupon_details.this, accept_coupon.class);
-            popupWindow.dismiss();
-            coupon_details.this.finish();//關閉activity
-            startActivity(intent);
-        }
-    };
 
     private void issue_coupon() {
         entity = (Coupon_entity) getIntent().getSerializableExtra("coupon");

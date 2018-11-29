@@ -61,7 +61,7 @@ public class sending_coupon extends nfc_base {
     private void barcode_generatge(String content) {
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 400, 400);
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 700, 700);
             image_qrcode.setImageBitmap(bitmap);
         } catch (Exception e) {
 
@@ -94,7 +94,7 @@ public class sending_coupon extends nfc_base {
         barcode_generatge(json.toString());
         this.message = new String[]{json.toString()};
         this.complete_message = "send complete";
-        textView_sending_coupon_name.setText("等待對方點選發送coupon");
+        textView_sending_coupon_name.setText("使用QRCODE或靠上NFC裝置點選發送身分給對方");
     }
 
     private void coupon_pay() {
@@ -108,7 +108,7 @@ public class sending_coupon extends nfc_base {
         barcode_generatge(json.toString());
         this.message = new String[]{json.toString()};
         this.complete_message = "pay complete";
-        textView_sending_coupon_name.setText("靠上NFC裝置後點選發送coupon");
+        textView_sending_coupon_name.setText("使用QRCODE或靠上NFC裝置後點選發送coupon");
     }
 
     private void coupon_obtain_coupon() {
@@ -121,7 +121,7 @@ public class sending_coupon extends nfc_base {
         barcode_generatge(json.toString());
         this.message = new String[]{json.toString()};
         this.complete_message = "obtain coupon complete";
-        textView_sending_coupon_name.setText("靠上NFC裝置 並點選送出身分給店家");
+        textView_sending_coupon_name.setText("使用QRCODE或靠上NFC裝置 並點選送出身分給店家");
     }
 
     @Override
