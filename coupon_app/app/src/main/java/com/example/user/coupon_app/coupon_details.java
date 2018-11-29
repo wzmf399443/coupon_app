@@ -64,7 +64,6 @@ public class coupon_details extends Navigation_baseActivity {
             ad.setMessage("支付/贈送?");
             ad.setPositiveButton("支付優惠券", new DialogInterface.OnClickListener() {//退出按鈕
                 public void onClick(DialogInterface dialog, int i) {
-                    // TODO Auto-generated method stub
                     intent.putExtra("method", "coupon_pay");
                     intent.setClass(coupon_details.this, sending_coupon.class);
                     coupon_details.this.finish();//關閉activity
@@ -73,7 +72,6 @@ public class coupon_details extends Navigation_baseActivity {
             });
             ad.setNegativeButton("贈送優惠券",new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int i) {
-                    //不退出不用執行任何操作
                     intent.putExtra("method", "coupon_send");
                     intent.setClass(coupon_details.this, accept_coupon.class);
                     coupon_details.this.finish();//關閉activity
@@ -81,9 +79,6 @@ public class coupon_details extends Navigation_baseActivity {
                 }
             });
             ad.show();//顯示對話框
-            // We need to get the instance of the LayoutInflater
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

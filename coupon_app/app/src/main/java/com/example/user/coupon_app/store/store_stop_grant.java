@@ -49,7 +49,6 @@ public class store_stop_grant extends Navigation_baseActivity {
             ad.setMessage("確定刪除全部優惠券嗎?");
             ad.setPositiveButton("是", new DialogInterface.OnClickListener() {//退出按鈕
                 public void onClick(DialogInterface dialog, int i) {
-                    // TODO Auto-generated method stub
                     Api_handler.merchant_terminateCoupon();
                     Toast.makeText(v.getContext(),"ALL coupons are deleted",Toast.LENGTH_LONG).show();
                 }
