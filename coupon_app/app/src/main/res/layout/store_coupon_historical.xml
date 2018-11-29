@@ -38,7 +38,7 @@
         android:background="#353535"
         android:textColor="#FFFFFF"
         android:layout_weight="0"
-        android:text="可用優惠券列表" />
+        android:text="歷史紀錄列表" />
 
 
     <TextView
