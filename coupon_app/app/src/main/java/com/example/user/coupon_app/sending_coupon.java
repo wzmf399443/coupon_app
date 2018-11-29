@@ -1,23 +1,28 @@
 package com.example.user.coupon_app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.coupon_app.NFC.nfc_base;
 import com.example.user.coupon_app.Util.Identity;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sending_coupon extends nfc_base {
     TextView textView_sending_coupon_name;
     String complete_message;
+    ImageView image_qrcode;
     int choose;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +31,7 @@ public class sending_coupon extends nfc_base {
         initView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        image_qrcode = findViewById(R.id.imageView_qrcode);
 
         String method = getIntent().getStringExtra("method");
         switch (method) {
@@ -51,9 +57,20 @@ public class sending_coupon extends nfc_base {
                 break;
         }
     }
+
+    private void barcode_generatge(String content) {
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 400, 400);
+            image_qrcode.setImageBitmap(bitmap);
+        } catch (Exception e) {
+
+        }
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {//捕捉返回鍵
-        if (CurrentMenuItem!=1){
+        if (CurrentMenuItem != 1) {
             if ((keyCode == KeyEvent.KEYCODE_BACK)) {
                 sending_coupon.this.finish();//關閉activity
                 Intent intent = new Intent();
@@ -61,29 +78,48 @@ public class sending_coupon extends nfc_base {
                 startActivity(intent);
                 return true;
             }
-        }
-        else {
+        } else {
 
         }
         return super.onKeyDown(keyCode, event);
     }
+
     private void coupon_receive() {
-        String[] message = {Identity.getContractAddress()};
-        this.message = message;
+        JSONObject json = new JSONObject();
+        try {
+            json.put("ContractAddress", Identity.getContractAddress());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        barcode_generatge(json.toString());
+        this.message = new String[]{json.toString()};
         this.complete_message = "send complete";
         textView_sending_coupon_name.setText("等待對方點選發送coupon");
     }
 
     private void coupon_pay() {
-        String[] message = {getIntent().getStringExtra("coupon"), Identity.getContractAddress()};
-        this.message = message;
+        JSONObject json = new JSONObject();
+        try {
+            json.put("ContractAddress", Identity.getContractAddress());
+            json.put("coupon", getIntent().getStringExtra("coupon"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        barcode_generatge(json.toString());
+        this.message = new String[]{json.toString()};
         this.complete_message = "pay complete";
         textView_sending_coupon_name.setText("靠上NFC裝置後點選發送coupon");
     }
 
     private void coupon_obtain_coupon() {
-        String[] message = {Identity.getContractAddress()};
-        this.message = message;
+        JSONObject json = new JSONObject();
+        try {
+            json.put("ContractAddress", Identity.getContractAddress());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        barcode_generatge(json.toString());
+        this.message = new String[]{json.toString()};
         this.complete_message = "obtain coupon complete";
         textView_sending_coupon_name.setText("靠上NFC裝置 並點選送出身分給店家");
     }
