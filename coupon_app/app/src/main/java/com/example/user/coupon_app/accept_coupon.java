@@ -1,5 +1,6 @@
 package com.example.user.coupon_app;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -25,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class accept_coupon extends Navigation_baseActivity {
-    TextView textView;
     private String TAG = "NFC";
     private static String method;
     private static String coupon;
@@ -40,7 +40,6 @@ public class accept_coupon extends Navigation_baseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_coupon);
-        textView = findViewById(R.id.textView);
 
         tv_use_message = findViewById(R.id.textView_message);
         tv_quantity = findViewById(R.id.textView_quantity);
@@ -218,21 +217,29 @@ public class accept_coupon extends Navigation_baseActivity {
         String data2 = json.optString("coupon", "");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String date = sdf.format(new Date());
-
+        String message = "";
+        JSONObject ret = new JSONObject();
         switch (method) {
             case "coupon_send":
-                Api_handler.consumer_transfer(data1, coupon);
-                Toast.makeText(this, "coupon send success", Toast.LENGTH_LONG).show();
+                ret = Api_handler.consumer_transfer(data1, coupon);
                 break;
             case "coupon_accept":
-                Api_handler.merchant_confirmCouponPay(value, date, data2, data1);
-                Toast.makeText(this, "coupon accept success", Toast.LENGTH_LONG).show();
+                ret = Api_handler.merchant_confirmCouponPay(value, date, data2, data1);
                 break;
             case "coupon_issue_for":
                 Log.d(TAG, "Get client id:" + data1);
-                Api_handler.merchant_grant(data1, quantity, date, "", value);
-                Toast.makeText(this, "issue coupon success", Toast.LENGTH_LONG).show();
+                ret = Api_handler.merchant_grant(data1, quantity, date, "", value);
                 break;
+        }
+
+        if (ret != null) {
+            message = ret.optString(getString(R.string.response_message));
+            new AlertDialog.Builder(this)
+                    .setMessage(message)
+                    .setPositiveButton("ok", (dialog, id) -> {
+                    }).show();
+        } else {
+            Toast.makeText(this, "failed", Toast.LENGTH_LONG).show();
         }
     }
 }
