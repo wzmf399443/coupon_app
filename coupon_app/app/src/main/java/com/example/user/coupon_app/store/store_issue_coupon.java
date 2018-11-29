@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,7 @@ public class store_issue_coupon extends Navigation_baseActivity {
     EditText edit_quantity;
     EditText edit_start;
     EditText edit_end;
+    String quantity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +45,7 @@ public class store_issue_coupon extends Navigation_baseActivity {
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem = 1;//目前Navigation項目位置
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
-
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
         tv_status=findViewById(R.id.textView_status);
         edit_name = findViewById(R.id.editText_name);
         edit_value = findViewById(R.id.editText_value);
@@ -81,6 +85,24 @@ public class store_issue_coupon extends Navigation_baseActivity {
                 showDatePickerDialog(edit_end);
             }
         });
+        quantity="1";
+        final String[] count = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        ArrayAdapter<String> countList =new ArrayAdapter<>(store_issue_coupon.this,
+                android.R.layout.simple_spinner_dropdown_item,
+                count);
+
+        spinner.setAdapter(countList);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                quantity=count[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
     public void showDatePickerDialog(EditText edit_text){
         Calendar c = Calendar.getInstance();
@@ -101,7 +123,7 @@ public class store_issue_coupon extends Navigation_baseActivity {
                     edit_name.getText().toString(),
                     Integer.valueOf(edit_value.getText().toString()),
                     Integer.valueOf(edit_limit.getText().toString()),
-                    Integer.valueOf(edit_quantity.getText().toString()),
+                    Integer.valueOf(quantity.toString()),
                     edit_start.getText().toString(),
                     edit_end.getText().toString()
             );

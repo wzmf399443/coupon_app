@@ -1,6 +1,8 @@
 package com.example.user.coupon_app.store;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,6 +15,9 @@ import android.widget.Toast;
 import com.example.user.coupon_app.Navigation_baseActivity;
 import com.example.user.coupon_app.R;
 import com.example.user.coupon_app.Util.Api_handler;
+import com.example.user.coupon_app.accept_coupon;
+import com.example.user.coupon_app.coupon_details;
+import com.example.user.coupon_app.sending_coupon;
 
 public class store_stop_grant extends Navigation_baseActivity {
 
@@ -34,40 +39,29 @@ public class store_stop_grant extends Navigation_baseActivity {
     }
 
     public void terminateCoupon(View view) {
-        showPopup();
+        showPopup(view);
     }
 
-    private void showPopup() {
+    private void showPopup(View v) {
         try {
-            // We need to get the instance of the LayoutInflater
-            View view = LayoutInflater.from(this).inflate(R.layout.popup,null);
-            popupWindow=new PopupWindow(this);
-            popupWindow.setContentView(view);
-            popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-            popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-            rootView =LayoutInflater.from(this).inflate(R.layout.activity_main, null);
-            popupWindow.showAtLocation(rootView, Gravity.BOTTOM,0,0);
-            popupWindow.setOutsideTouchable(true);
-            Button yes = view.findViewById(R.id.button_yes);
-            yes.setOnClickListener(yes_button);
-            Button no = view.findViewById(R.id.button_no);
-            no.setOnClickListener(no_button);
+            AlertDialog.Builder ad=new AlertDialog.Builder(store_stop_grant.this);
+            ad.setTitle("確定刪除");
+            ad.setMessage("確定刪除全部優惠券嗎?");
+            ad.setPositiveButton("是", new DialogInterface.OnClickListener() {//退出按鈕
+                public void onClick(DialogInterface dialog, int i) {
+                    Api_handler.merchant_terminateCoupon();
+                    Toast.makeText(v.getContext(),"ALL coupons are deleted",Toast.LENGTH_LONG).show();
+                }
+            });
+            ad.setNegativeButton("否",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int i) {
+                    //退出不用執行任何操作
+                }
+            });
+            ad.show();//顯示對話框
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private View.OnClickListener yes_button= new View.OnClickListener(){
-        public void onClick(View v) {
-            Api_handler.merchant_terminateCoupon();
-            Toast.makeText(v.getContext(),"ALL coupons are deleted",Toast.LENGTH_LONG).show();
-            popupWindow.dismiss();
-        }
-    };
-
-    private View.OnClickListener no_button = new View.OnClickListener() {
-        public void onClick(View v) {
-            popupWindow.dismiss();
-        }
-    };
 }
