@@ -34,11 +34,11 @@
         android:id="@+id/textView18"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:gravity="center"
-        android:background="#353535"
-        android:textColor="#FFFFFF"
         android:layout_weight="0"
-        android:text="可用優惠券列表" />
+        android:background="#353535"
+        android:gravity="center"
+        android:text="未發放優惠券列表"
+        android:textColor="#FFFFFF" />
 
 
     <TextView
