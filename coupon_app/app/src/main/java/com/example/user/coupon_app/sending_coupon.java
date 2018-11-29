@@ -131,7 +131,5 @@ public class sending_coupon extends nfc_base {
         // cause onNdefPushComplete is called from the Binder thread
         runOnUiThread(() ->
                 Toast.makeText(this, this.complete_message, Toast.LENGTH_SHORT).show());
-        Intent intent = new Intent().setClass(sending_coupon.this, home.class);
-        startActivity(intent);
     }
 }
