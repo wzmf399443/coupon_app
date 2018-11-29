@@ -55,8 +55,14 @@ public class home extends Navigation_baseActivity {
 
         myViewPager = (ViewPager) findViewById(R.id.myViewPager);
         tabLayout = (TabLayout) findViewById(R.id.TabLayout);
+
+        tabLayout.setupWithViewPager(myViewPager);
+        initView();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void initView(){
         List<View> vlist = new ArrayList<View>();
-        List<Coupon_entity> coupons = new ArrayList<>();
 
         if (Identity.getIdentity().equals(getString(R.string.id_customer))) {
             vlist.add(getLayoutInflater().inflate(R.layout.activity_coupon_list_available, null));
@@ -64,6 +70,8 @@ public class home extends Navigation_baseActivity {
             listview = (ListView) vlist.get(0).findViewById(R.id.listview_coupon);
             tv_list_view = (TextView) vlist.get(0).findViewById(R.id.textView_show);
             myViewPager.setAdapter(new myadapter(vlist, myViewPager));
+
+            List<Coupon_entity> coupons = new ArrayList<>();
 
             Optional.ofNullable(this.getCoupons(Api_handler.consumer_getCoupons())).ifPresent(coupons::addAll);
             setView(coupons, listview, tv_list_view);
@@ -78,24 +86,25 @@ public class home extends Navigation_baseActivity {
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_unissued, null));
             myViewPager.setAdapter(new myadapter(vlist, myViewPager));
 
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUsedCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons, vlist.get(2));
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUnusedCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons, vlist.get(0));
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons, vlist.get(3));
-            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getHistoryCoupon())).ifPresent(coupons::addAll);
-            setViewValue(coupons, vlist.get(1));
+            List<Coupon_entity> coupons_unused = new ArrayList<>();
+            List<Coupon_entity> coupons_used = new ArrayList<>();
+            List<Coupon_entity> coupons_notgiven = new ArrayList<>();
+            List<Coupon_entity> coupons_history = new ArrayList<>();
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUnusedCoupon())).ifPresent(coupons_unused::addAll);
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getHistoryCoupon())).ifPresent(coupons_history::addAll);
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getUsedCoupon())).ifPresent(coupons_used::addAll);
+            Optional.ofNullable(this.getCoupons(Api_handler.merchant_getNotGivenCoupon())).ifPresent(coupons_notgiven::addAll);
 
-            tabLayout.setupWithViewPager(myViewPager);
+            setViewValue(coupons_notgiven, vlist.get(0));
+            setViewValue(coupons_unused, vlist.get(1));
+            setViewValue(coupons_used, vlist.get(2));
+            setViewValue(coupons_history, vlist.get(3));
+
+            tabLayout.getTabAt(0).setText("未發放");
+            tabLayout.getTabAt(1).setText("未使用");
             tabLayout.getTabAt(2).setText("已使用");
-            tabLayout.getTabAt(0).setText("未使用");
             tabLayout.getTabAt(3).setText("歷史紀錄");
-            tabLayout.getTabAt(1).setText("未發放");
-
         }
-
-
     }
 
     private void setView(List<Coupon_entity> coupons, ListView listview, TextView tv_list_view) {
@@ -107,15 +116,13 @@ public class home extends Navigation_baseActivity {
         } else {
             tv_list_view.setVisibility(View.INVISIBLE);
             listview.setAdapter(new ListCouponAdapter(this, R.layout.content_coupon_layout, coupons));
-            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Log.d("home", "coupon:" + position);
-                    Intent intent = new Intent();
-                    home.this.finish();//關閉activity
-                    intent.putExtra("coupon", coupons.get(position));
-                    intent.setClass(home.this, coupon_details.class);
-                    startActivity(intent);
-                }
+            listview.setOnItemClickListener((parent, v, position, id) -> {
+                Log.d("home", "coupon:" + position);
+                Intent intent = new Intent();
+                home.this.finish();//關閉activity
+                intent.putExtra("coupon", coupons.get(position));
+                intent.setClass(home.this, coupon_details.class);
+                startActivity(intent);
             });
         }
     }

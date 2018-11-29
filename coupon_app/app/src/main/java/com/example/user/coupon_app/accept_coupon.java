@@ -185,10 +185,7 @@ public class accept_coupon extends Navigation_baseActivity {
             NdefMessage msg = (NdefMessage) rawMessages[0];
             String data = new String(msg.getRecords()[0].getPayload());
             try {
-                JSONObject json = new JSONObject(data);
-                process_sending_data(
-                        json.optString("ContractAddress", ""),
-                        json.optString("coupon", ""));
+                process_sending_data(data);
             } catch (JSONException e) {
                 e.printStackTrace();
                 Toast.makeText(this, "Receive nfc data failed", Toast.LENGTH_LONG).show();
@@ -203,10 +200,7 @@ public class accept_coupon extends Navigation_baseActivity {
             if (scanningResult.getContents() != null) {
                 String scanContent = scanningResult.getContents();
                 try {
-                    JSONObject json = new JSONObject(scanContent);
-                    process_sending_data(
-                            json.optString("ContractAddress", ""),
-                            json.optString("coupon", ""));
+                    process_sending_data(scanContent);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(this, "Receive qrcode data failed", Toast.LENGTH_LONG).show();
@@ -218,7 +212,10 @@ public class accept_coupon extends Navigation_baseActivity {
         }
     }
 
-    private void process_sending_data(String data1, String data2) {
+    private void process_sending_data(String json_string) throws JSONException {
+        JSONObject json = new JSONObject(json_string);
+        String data1 = json.optString("ContractAddress", "");
+        String data2 = json.optString("coupon", "");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String date = sdf.format(new Date());
 
