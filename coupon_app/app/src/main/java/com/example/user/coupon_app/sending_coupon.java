@@ -1,5 +1,7 @@
 package com.example.user.coupon_app;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -130,6 +132,10 @@ public class sending_coupon extends nfc_base {
         // should be triggered on UI thread. We specify it explicitly
         // cause onNdefPushComplete is called from the Binder thread
         runOnUiThread(() ->
-                Toast.makeText(this, this.complete_message, Toast.LENGTH_SHORT).show());
+                new AlertDialog.Builder(this)
+                        .setMessage(this.complete_message)
+                        .setPositiveButton("ok", (dialog, id) -> {
+                        }).show()
+                );
     }
 }
