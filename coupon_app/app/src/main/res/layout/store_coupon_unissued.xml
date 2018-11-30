@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_weight="0"
         android:scaleType="fitXY"
@@ -34,11 +34,11 @@
         android:id="@+id/textView18"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:gravity="center"
-        android:background="#353535"
-        android:textColor="#FFFFFF"
         android:layout_weight="0"
-        android:text="未使用優惠券列表" />
+        android:background="#353535"
+        android:gravity="center"
+        android:text="未使用優惠券列表"
+        android:textColor="#FFFFFF" />
 
 
     <TextView
@@ -46,13 +46,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:layout_weight="0"
+        android:layout_weight="1"
         android:text="TextView"
         android:visibility="invisible" />
 
     <ListView
         android:id="@+id/listview_coupon"
         android:layout_width="wrap_content"
-        android:layout_height="409dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0" />
 
 </LinearLayout>
