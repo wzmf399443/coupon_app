@@ -80,10 +80,11 @@ public class home extends Navigation_baseActivity {
             tabLayout.getTabAt(0).setText("可使用");
 
         } else {
-            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_used, null));
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_available, null));
-            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_historical, null));
             vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_unissued, null));
+            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_used, null));
+            vlist.add(getLayoutInflater().inflate(R.layout.store_coupon_historical, null));
+
             myViewPager.setAdapter(new myadapter(vlist, myViewPager));
 
             List<Coupon_entity> coupons_unused = new ArrayList<>();

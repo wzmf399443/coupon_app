@@ -38,7 +38,7 @@
         android:background="#353535"
         android:textColor="#FFFFFF"
         android:layout_weight="0"
-        android:text="可用優惠券列表" />
+        android:text="未使用優惠券列表" />
 
 
     <TextView
@@ -53,7 +53,6 @@
     <ListView
         android:id="@+id/listview_coupon"
         android:layout_width="wrap_content"
-        android:layout_height="409dp"
-        android:layout_weight="1" />
+        android:layout_height="409dp" />
 
 </LinearLayout>
