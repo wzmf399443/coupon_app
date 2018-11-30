@@ -4,13 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.user.coupon_app.Util.Identity;
@@ -19,7 +15,6 @@ public class coupon_details extends Navigation_baseActivity {
     private String TAG = "coupon details";
     private Button btn_send;
     private Coupon_entity entity;
-    private PopupWindow popupWindow;
     private Intent intent = new Intent();
 
     @Override
@@ -31,6 +26,10 @@ public class coupon_details extends Navigation_baseActivity {
         toolbar.setTitle(R.string.title_detail);//設置ToolBar Title
 
         btn_send.setOnClickListener(view -> choose());
+        btn_send.setVisibility(View.INVISIBLE);
+        if(getIntent().getIntExtra("page_number",0)==0){
+            btn_send.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

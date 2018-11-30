@@ -122,6 +122,8 @@ public class home extends Navigation_baseActivity {
                 Intent intent = new Intent();
                 home.this.finish();//關閉activity
                 intent.putExtra("coupon", coupons.get(position));
+                int currentItem = myViewPager.getCurrentItem();
+                intent.putExtra("page_number",currentItem);
                 intent.setClass(home.this, coupon_details.class);
                 startActivity(intent);
             });
