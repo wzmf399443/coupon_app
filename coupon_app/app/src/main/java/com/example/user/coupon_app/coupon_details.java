@@ -90,7 +90,7 @@ public class coupon_details extends Navigation_baseActivity {
 
     private void set_show_coupon_message_content(Coupon_entity entity) {
         /* coupon details view */
-//        TextView textView_couponAddress = findViewById(R.id.textView_couponAddress);
+        TextView textView_couponAddress = findViewById(R.id.textView_couponAddress);
         TextView textView_limit = findViewById(R.id.textView_limit);
         TextView textView_obtainValue = findViewById(R.id.textView_obtainValue);
         TextView textView_status = findViewById(R.id.textView_status);
@@ -98,7 +98,7 @@ public class coupon_details extends Navigation_baseActivity {
         TextView textView_obtainDate = findViewById(R.id.textView_obtainDate);
         TextView textView_consumeDate = findViewById(R.id.textView_consumeDate);
 
-//        textView_couponAddress.setText(entity.getCouponAddress());
+        textView_couponAddress.setText(entity.getCouponAddress());
         textView_limit.setText(String.valueOf(entity.getLimit()));
         textView_obtainValue.setText(String.valueOf(entity.getObtainValue()));
         textView_status.setText(String.valueOf(entity.getStatus()));
