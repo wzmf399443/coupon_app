@@ -155,7 +155,6 @@ public class accept_coupon extends Navigation_baseActivity {
         // Check to see that the Activity started due to an Android Beam
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             processNFCData(getIntent());
-            startActivity(new Intent().setClass(this,home.class));
         }
     }
 
