@@ -202,7 +202,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="1dip"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/textView16"
