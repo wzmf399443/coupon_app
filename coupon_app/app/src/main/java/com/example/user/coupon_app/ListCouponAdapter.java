@@ -28,7 +28,6 @@ public class ListCouponAdapter extends ArrayAdapter<Coupon_entity> {
         TextView textView_merchant = coupon_view.findViewById(R.id.textview_merchant);
         TextView textView_value = coupon_view.findViewById(R.id.textview_value);
         TextView textView_consume_value = coupon_view.findViewById(R.id.textview_consumerValue);
-//        ImageView imageView = coupon_view.findViewById(R.id.imageview_coupon);
 
         textView_name.setText(entity.getCoupon_name());
         textView_expire_date.setText(entity.getExpire_date());
@@ -37,7 +36,6 @@ public class ListCouponAdapter extends ArrayAdapter<Coupon_entity> {
         textView_consume_value.setText(String.valueOf(entity.getCoupon_consumerValue()));
 
         /* TODO:put images here */
-//        imageView.setImageResource(R.drawable.phone_coupon);
     }
 
     @Override
